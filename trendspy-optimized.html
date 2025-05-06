@@ -1,0 +1,2406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrendSpy - UX Case Study</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+/* TrendSpy color palette */
+:root {
+    --primary: #6433E0; /* vibrant purple */
+    --primary-light: #8F69FF; /* light purple */
+    --primary-dark: #4A26A7; /* dark purple */
+    --secondary: #14142B; /* dark blue/black */
+    --secondary-light: #262645; /* lighter secondary */
+    --accent: #202020; /* dark text */
+    --dark: #0A0A1A; /* near black */
+    --light: #F9F9F9; /* very light background */
+    --light-gray: #F2F2F2; /* light gray for sections */
+    --green: #9DE0A7; /* green for tags - brightened */
+    --yellow: #FFCC4D; /* yellow for tags - brightened */
+    --purple: #CD8CD8; /* purple for tags */
+    --teal: #8CDBE0; /* teal for tags - brightened */
+    --focus-outline: 3px solid var(--primary); /* Accessibility outline */
+    
+    /* Dashboard color scheme */
+    --dark-navy: #07081b;
+    --navy: #0d0e2b;
+    --dashboard-purple: #ae3ec9;
+    --light-dashboard-purple: #cf5ee6;
+    --cyan: #4cc3cf;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--accent);
+    line-height: 1.6;
+    background-color: var(--light);
+    overflow-x: hidden;
+    font-size: 16px;
+    font-weight: 300;
+    padding-bottom: 65px; /* For bottom navigation */
+}
+
+/* Improved spacing */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+/* Accessibility enhancements */
+:focus {
+    outline: var(--focus-outline);
+    outline-offset: 3px;
+}
+
+/* Skip link for keyboard accessibility */
+.skip-link {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    padding: 10px;
+    background: var(--primary);
+    color: var(--light);
+    z-index: 1000;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Side Navigation */
+.side-navigation {
+    position: fixed;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px 10px;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+}
+
+.nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ddd;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.nav-dot.active {
+    background-color: var(--primary);
+    transform: scale(1.3);
+    box-shadow: 0 0 10px rgba(100, 51, 224, 0.5);
+}
+
+.nav-dot:hover {
+    background-color: var(--primary-light);
+    transform: scale(1.2);
+}
+
+.nav-dot::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--dark);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.nav-dot:hover::before {
+    opacity: 1;
+    visibility: visible;
+    right: 30px;
+}
+
+@media (max-width: 768px) {
+    .side-navigation {
+        display: none;
+    }
+}
+
+/* Hero Section */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: linear-gradient(135deg, var(--navy), var(--dark-navy));
+    overflow: hidden;
+    padding: 5% 0;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="1" cy="1" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+.hero .container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+}
+
+.hero h1 {
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    margin-bottom: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    line-height: 0.9;
+    color: var(--light);
+    text-align: left;
+    word-break: break-word;
+}
+
+.hero h1 span {
+    display: block;
+    color: var(--dashboard-purple);
+    font-size: clamp(3rem, 8vw, 7rem);
+}
+
+.hero p {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    line-height: 1.5;
+    color: var(--light);
+    font-weight: 300;
+    text-align: left;
+}
+
+.hero .btn {
+    display: inline-block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .hero {
+        min-height: 70vh;
+        padding: 4% 0;
+    }
+    
+    .hero-content {
+        max-width: 600px;
+    }
+    
+    .hero h1 {
+        font-size: clamp(3rem, 7vw, 6rem);
+    }
+    
+    .hero h1 span {
+        font-size: clamp(2.5rem, 6vw, 5.5rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 60vh;
+        padding: 10% 0;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    
+    .hero h1 {
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        letter-spacing: -1px;
+    }
+    
+    .hero h1 span {
+        font-size: clamp(2.2rem, 7vw, 4.5rem);
+    }
+    
+    .hero p {
+        font-size: clamp(1rem, 4vw, 1.3rem);
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        min-height: 50vh;
+        padding: 15% 0;
+    }
+    
+    .hero h1 {
+        font-size: clamp(2rem, 9vw, 3.5rem);
+    }
+    
+    .hero h1 span {
+        font-size: clamp(1.8rem, 8vw, 3.2rem);
+    }
+    
+    .role-badge {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+}
+
+/* Project Info Bar */
+.project-info-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    background: white;
+    border-radius: 20px;
+    padding: 40px 50px;
+    margin: 40px 0 80px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-info-bar:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.meta-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.meta-value {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.skill-tag {
+    background: var(--light-gray);
+    color: var(--accent);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+    background: var(--primary-light);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(100, 51, 224, 0.2);
+}
+
+/* Improved mobile responsiveness for project info bar */
+@media (max-width: 768px) {
+    .project-info-bar {
+        padding: 25px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .project-meta {
+        gap: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    
+    .skill-tags {
+        width: 100%;
+    }
+    
+    .skill-tag {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Section styling */
+section {
+    padding: 70px 0;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 50px 0;
+    }
+}
+
+section.alt {
+    background-color: var(--light-gray);
+}
+
+.section-heading {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    color: var(--accent);
+}
+
+.section-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 100px;
+    height: 5px;
+    background: var(--dashboard-purple);
+    border-radius: 2px;
+}
+
+.subheading {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    color: var(--dashboard-purple);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Role Badge */
+.role-badge {
+    display: inline-block;
+    background: var(--dashboard-purple);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    border: 1px solid rgba(174, 62, 201, 0.3);
+}
+
+/* Overview Cards Section */
+.overview-wrapper {
+    background: linear-gradient(135deg, var(--dashboard-purple), var(--navy));
+    border-radius: 30px;
+    padding: 60px;
+    margin-bottom: 80px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.overview-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.3)"/></svg>') repeat;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+.overview-content {
+    position: relative;
+    z-index: 1;
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.overview-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.overview-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.overview-card h3 {
+    color: var(--dashboard-purple);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.overview-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--dashboard-purple);
+    border-radius: 3px;
+}
+
+.overview-card p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.overview-card ul {
+    padding-left: 20px;
+}
+
+.overview-card li {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.overview-card li::before {
+    content: '•';
+    color: var(--dashboard-purple);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.challenge-statement {
+    background: rgba(174, 62, 201, 0.1);
+    border-left: 4px solid var(--dashboard-purple);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 0 10px 10px 0;
+}
+
+/* Improved mobile responsiveness for overview section */
+@media (max-width: 768px) {
+    .overview-wrapper {
+        padding: 30px 20px;
+        margin-bottom: 40px;
+    }
+    
+    .overview-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .overview-card {
+        padding: 20px;
+    }
+    
+    .overview-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .overview-card p {
+        font-size: 1rem;
+    }
+}
+
+/* Content Layouts */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 992px) {
+    .content-grid {
+        gap: 40px;
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+/* Text Content */
+.text-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.text-content ul, .text-content ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.text-content li {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.text-content strong {
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .text-content p {
+        font-size: 1rem;
+    }
+    
+    .text-content li {
+        font-size: 1rem;
+    }
+}
+
+/* Image styling */
+.img-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    transform: rotate(-2deg);
+    transition: all 0.4s ease;
+}
+
+.img-container:hover {
+    transform: rotate(0deg);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.img-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+.img-container:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .img-container {
+        transform: rotate(0);
+        margin-bottom: 30px;
+    }
+}
+
+/* Process Steps */
+.process-step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 30px;
+    margin-bottom: 60px;
+    align-items: flex-start;
+}
+
+.step-number {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--dashboard-purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 5px 15px rgba(174, 62, 201, 0.4);
+}
+
+.step-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--dashboard-purple);
+    font-weight: 600;
+}
+
+@media (max-width: 576px) {
+    .process-step {
+        grid-template-columns: 60px 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+    
+    .step-number {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .step-content h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Process Timeline */
+.process-timeline {
+    position: relative;
+    margin: 60px 0;
+}
+
+.process-timeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 30px;
+    width: 2px;
+    background: var(--primary-light);
+}
+
+.process-item {
+    display: flex;
+    padding-left: 70px;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.process-marker {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    z-index: 2;
+    box-shadow: 0 0 0 5px white;
+}
+
+.process-content {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    flex: 1;
+    transition: all 0.3s ease;
+    border-left: 3px solid var(--primary);
+}
+
+.process-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.process-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.process-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dashboard-purple);
+}
+
+@media (max-width: 576px) {
+    .process-item {
+        padding-left: 60px;
+    }
+    
+    .process-content {
+        padding: 20px;
+    }
+    
+    .process-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Research Findings */
+.findings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.finding-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--dashboard-purple);
+    font-weight: 600;
+}
+
+@media (max-width: 576px) {
+    .findings-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .finding-card {
+        padding: 20px;
+    }
+    
+    .finding-card h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Decision Cards */
+.decision-card {
+    background: var(--light);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 25px 0;
+    border-left: 4px solid var(--dashboard-purple);
+}
+
+.decision-title {
+    font-weight: 600;
+    color: var(--dashboard-purple);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}nth-child(2) {
+    border-left-color: var(--purple);
+}
+
+.finding-card:nth-child(3) {
+    border-left-color: var(--teal);
+}
+
+.finding-card:nth-child(4) {
+    border-left-color: var(--green);
+}
+
+.finding-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.finding-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+@media (max-width: 576px) {
+    .findings-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .finding-card {
+        padding: 20px;
+    }
+    
+    .finding-card h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Decision Cards */
+.decision-card {
+    background: var(--light);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 25px 0;
+    border-left: 4px solid var(--primary);
+}
+
+.decision-title {
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (max-width: 576px) {
+    .decision-card {
+        padding: 20px;
+    }
+}
+
+/* Quote Box */
+.quote-box {
+    background: var(--dashboard-purple);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 25px 0;
+    position: relative;
+    color: white;
+}
+
+.quote-text {
+    font-style: italic;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.quote-text::before {
+    content: '"';
+    font-size: 2.5rem;
+    position: absolute;
+    left: -10px;
+    top: -15px;
+    color: white;
+    opacity: 0.5;
+}
+
+.quote-author {
+    font-weight: 600;
+    color: white;
+}
+
+@media (max-width: 576px) {
+    .quote-box {
+        padding: 20px;
+    }
+    
+    .quote-text::before {
+        font-size: 2rem;
+        left: -8px;
+        top: -10px;
+    }
+}
+
+/* Image Gallery */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.gallery-item {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 576px) {
+    .image-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Feature Grid */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-top: 5px solid var(--dashboard-purple);
+}
+
+.feature-card:nth-child(2) {
+    border-top-color: var(--cyan);
+}
+
+.feature-card:nth-child(3) {
+    border-top-color: var(--light-dashboard-purple);
+}
+
+.feature-card:nth-child(4) {
+    border-top-color: var(--navy);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.feature-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--dashboard-purple);
+    font-weight: 600;
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--dashboard-purple);
+}
+
+/* Mobile showcase */
+.mobile-showcase {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 60px 0;
+    flex-wrap: wrap;
+}
+
+.mobile-device {
+    background: #121212;
+    border-radius: 40px;
+    padding: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    position: relative;
+    width: 280px;
+    margin-bottom: 20px;
+}
+
+.mobile-device::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 30px;
+    background: #121212;
+    border-radius: 0 0 20px 20px;
+    z-index: 2;
+}
+
+.mobile-screen {
+    overflow: hidden;
+    border-radius: 30px;
+    height: 560px;
+}
+
+.mobile-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.screen-label {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+@media (max-width: 992px) {
+    .mobile-showcase {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .mobile-showcase {
+        margin: 40px 0;
+    }
+}
+
+/* Results Section */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.result-item {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border-bottom: 3px solid var(--primary);
+}
+
+.result-item:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.result-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.result-text {
+    font-size: 1rem;
+    color: var(--accent);
+}
+
+@media (max-width: 576px) {
+    .results-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .result-item {
+        padding: 20px;
+    }
+}
+
+/* Two-Column Layout */
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 40px 0;
+}
+
+@media (max-width: 992px) {
+    .two-columns {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .two-columns {
+        margin: 30px 0;
+        gap: 25px;
+    }
+}
+
+/* Reflection Box */
+.reflection-box {
+    background: var(--light-gray);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 40px 0;
+}
+
+.reflection-title {
+    font-size: 1.3rem;
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-light);
+}
+
+@media (max-width: 768px) {
+    .reflection-box {
+        padding: 25px;
+        margin: 30px 0;
+    }
+    
+    .reflection-title {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .reflection-box {
+        padding: 20px;
+    }
+}
+
+/* Next Steps Container */
+.next-steps-container {
+    background: linear-gradient(135deg, var(--navy), var(--dark-navy));
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+.next-steps-intro {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.next-steps-intro p {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--light);
+    font-weight: 400;
+}
+
+.next-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    position: relative;
+}
+
+.next-step-item {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+    border-left: 4px solid var(--dashboard-purple);
+    color: var(--accent);
+}
+
+.next-step-item:nth-child(2) {
+    border-left-color: var(--cyan);
+}
+
+.next-step-item:nth-child(3) {
+    border-left-color: var(--light-dashboard-purple);
+}
+
+.next-step-item:nth-child(4) {
+    border-left-color: var(--green);
+}
+
+.next-step-item:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.next-step-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.next-step-item h3 {
+    color: var(--dashboard-purple);
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.next-step-content {
+    padding: 25px;
+}
+
+.next-step-content p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: var(--accent);
+}
+
+.next-step-content ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.next-step-content li {
+    margin-bottom: 10px;
+    position: relative;
+    color: var(--accent);
+}
+
+.next-step-content li::before {
+    content: '•';
+    color: var(--primary);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Improved mobile responsiveness for next steps */
+@media (max-width: 992px) {
+    .next-steps-container {
+        padding: 40px 30px;
+    }
+    
+    .next-steps-intro p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .next-steps-container {
+        padding: 30px 20px;
+        margin-top: 30px;
+    }
+    
+    .next-steps-intro {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .next-steps-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .next-step-item h3 {
+        font-size: 1.2rem;
+    }
+    
+    .next-step-header {
+        padding: 15px 20px;
+    }
+    
+    .next-step-content {
+        padding: 20px;
+    }
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 5px 15px rgba(100, 51, 224, 0.3);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(100, 51, 224, 0.4);
+}
+
+/* Mobile responsive buttons */
+@media (max-width: 576px) {
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Loading Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Media Query for Small Devices */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero {
+        min-height: 80vh;
+    }
+    
+    .hero h1 {
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+    
+    .hero h1 span {
+        font-size: clamp(2.5rem, 7vw, 3.5rem);
+    }
+    
+    .hero p {
+        font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    }
+    
+    .section-heading {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        margin-bottom: 30px;
+    }
+    
+    .section-heading::after {
+        width: 80px;
+        height: 4px;
+    }
+}
+
+/* Bottom Navigation for Mobile */
+.bottom-nav {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        z-index: 100;
+        justify-content: space-around;
+        padding: 10px 0;
+        border-top: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .bottom-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: var(--accent);
+        font-size: 0.7rem;
+        padding: 5px;
+        transition: all 0.3s ease;
+    }
+    
+    .bottom-nav-icon {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 4px;
+        transition: all 0.3s ease;
+    }
+    
+    .bottom-nav-item.active {
+        color: var(--primary);
+    }
+    
+    .bottom-nav-item.active .bottom-nav-icon {
+        transform: scale(1.1);
+    }
+    
+    .bottom-nav-item:hover {
+        color: var(--primary-light);
+    }
+}
+/* Add this to your CSS */
+body {
+    /* Change this from padding-bottom: 65px; to: */
+    padding-bottom: 0;
+}
+
+/* Add this to style the section all the way to the bottom */
+#results {
+    padding-bottom: 65px; /* Move the padding from body to here */
+    margin-bottom: 0;
+}
+
+/* Make sure the section extends fully */
+section.alt:last-of-type {
+    min-height: calc(100vh - 200px); /* This ensures it fills the remaining viewport */
+}
+
+/* Ensure the bottom nav sits exactly at the bottom of the viewport */
+.bottom-nav {
+    bottom: 0;
+    margin-bottom: 0;
+}
+</style>
+</head>
+<body>
+    <!-- Skip link for keyboard accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Side Navigation -->
+    <div class="side-navigation">
+        <a href="#overview" class="nav-dot" data-tooltip="Overview"></a>
+        <a href="#research" class="nav-dot" data-tooltip="Research"></a>
+        <a href="#process" class="nav-dot" data-tooltip="Process"></a>
+        <a href="#design" class="nav-dot" data-tooltip="Design"></a>
+        <a href="#testing" class="nav-dot" data-tooltip="Testing"></a>
+        <a href="#results" class="nav-dot" data-tooltip="Results"></a>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content">
+                <span class="role-badge">Lead Product Designer + Front-End Developer</span>
+                <h1>TREND<span>SPY</span></h1>
+                <p>How I transformed market research fragmentation into an intuitive trend analysis platform that helps small businesses reduce analysis time by 40% and make data-driven decisions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Info -->
+    <div class="container">
+        <div class="project-info-bar fade-in">
+            <div class="project-meta">
+                <div class="meta-item">
+                    <span class="meta-label">My Role</span>
+                    <span class="meta-value">Lead Designer & Developer</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Timeline</span>
+                    <span class="meta-value">August 2024 - Present</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Team</span>
+                    <span class="meta-value">5 Core Members</span>
+                </div>
+            </div>
+            <div class="skill-tags">
+                <span class="skill-tag">UX Research</span>
+                <span class="skill-tag">React.js</span>
+                <span class="skill-tag">Data Visualization</span>
+                <span class="skill-tag">WCAG 2.2</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Introduction & Overview Section -->
+    <section id="overview">
+        <div class="container">
+            <h2 class="section-heading">Overview</h2>
+            
+            <div class="overview-wrapper">
+                <div class="overview-content">
+                    <div class="overview-grid">
+                        <div class="overview-card">
+                            <h3>The Challenge</h3>
+                            <p>Small businesses waste 40% of their trend analysis time juggling multiple platforms, leading to missed market opportunities, excessive costs, and delayed decision-making.</p>
+                            <div class="challenge-statement">
+                                <strong>How might we create a unified trend analysis solution that helps small businesses identify market opportunities faster?</strong>
+                            </div>
+                        </div>
+                        
+                        <div class="overview-card">
+                            <h3>Our Solution</h3>
+                            <p>TrendSpy is a comprehensive trend analysis platform that consolidates data from social media, search engines, news sources, and industry-specific feeds into one intuitive interface.</p>
+                            <p>The platform offers personalized trend alerts, customizable dashboards, and AI-powered insights tailored to small business needs.</p>
+                        </div>
+                        
+                        <div class="overview-card">
+                            <h3>Key Features</h3>
+                            <ul>
+                                <li>Real-time trend tracking across multiple platforms</li>
+                                <li>Industry-specific trend discovery engine</li>
+                                <li>Historical trend analysis with prediction tools</li>
+                                <li>Customizable dashboards and alerts</li>
+                                <li>AI Magic Ball for trend insights and predictions</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="overview-card">
+                            <h3>My Contribution</h3>
+                            <ul>
+                                <li>Led user research with 12 stakeholders across 6 companies</li>
+                                <li>Created a design system with 15 reusable components</li>
+                                <li>Led UX and front-end development with React.js</li>
+                                <li>Implemented WCAG 2.2 accessibility standards</li>
+                                <li>Designed AI-driven analytics features</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <div class="text-content">
+                    <h3 class="subheading">My Role & Responsibilities</h3>
+                    <p>As both the lead product designer and front-end developer, I work directly with the CEO and our backend developer to create TrendSpy from concept to implementation. This dual role allows me to maintain the design vision throughout the entire product development process.</p>
+                    <p>The CEO provides the initial concept and business requirements, while I'm responsible for translating these into a user-centered design and functional front-end. I collaborate closely with our backend developer to ensure seamless integration between the UI and data processing systems.</p>
+                </div>
+                
+                <div class="img-container">
+                    <img src="https://placehold.co/600x400/6433E0/FFFFFF?text=Team+Collaboration" alt="Collaborative design session with CEO and developer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Process Section -->
+    <section id="research" class="alt">
+        <div class="container">
+            <h2 class="section-heading">Research</h2>
+            
+            <div class="text-content full-width">
+                <p>I led a comprehensive research effort to understand how small businesses currently analyze market trends, what tools they use, and their pain points in the process. Working closely with the CEO, we developed a research plan focused on in-depth qualitative insights.</p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="process-item fade-in">
+                    <div class="process-marker">1</div>
+                    <div class="process-content">
+                        <div class="process-heading">
+                            <h3 class="process-title">Competitive Analysis</h3>
+                        </div>
+                        <p>I conducted comprehensive analysis of existing market solutions to identify gaps and opportunities:</p>
+                        <ul>
+                            <li><strong>Exploding Topics</strong> - Cross-platform data analysis with vetted trends</li>
+                            <li><strong>Google Trends</strong> - Basic search volume data with limited trend analysis</li>
+                            <li><strong>BuzzSumo</strong> - Social media-focused content trend tracking</li>
+                            <li><strong>SEMrush Trends</strong> - Marketing-focused analysis with competitor tracking</li>
+                        </ul>
+                        <p><strong>Key Finding:</strong> While many solutions existed, none provided a truly unified, affordable platform specifically designed for small business needs.</p>
+                    </div>
+                </div>
+                
+                <div class="process-item fade-in">
+                    <div class="process-marker">2</div>
+                    <div class="process-content">
+                        <div class="process-heading">
+                            <h3 class="process-title">Stakeholder Interviews</h3>
+                        </div>
+                        <p>I personally conducted 12 in-depth interviews with stakeholders across 6 companies:</p>
+                        <ul>
+                            <li>2 startups</li>
+                            <li>2 small businesses</li>
+                            <li>2 mid-sized companies</li>
+                        </ul>
+                        <p>Each 60-minute session focused on current workflows, pain points, and tool usage patterns, with a mix of decision-makers and day-to-day users to ensure comprehensive insights.</p>
+                        <div class="decision-card" style="margin: 15px 0 0; padding: 15px;">
+                            <p style="margin-bottom: 0;"><strong>Key Insight:</strong> Users were spending an average of 15+ hours weekly on trend analysis, with 40% of that time wasted on platform switching and data consolidation.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-item fade-in">
+                    <div class="process-marker">3</div>
+                    <div class="process-content">
+                        <div class="process-heading">
+                            <h3 class="process-title">Field Studies</h3>
+                        </div>
+                        <p>I spent full days with marketing teams observing their actual workflow patterns, capturing real-time frustrations and workarounds they had developed:</p>
+                        <ul>
+                            <li>Observed 3.2 different platforms being used on average for trend analysis</li>
+                            <li>Documented 15+ manual copy-paste operations per analysis session</li>
+                            <li>Identified inconsistent data formats across platforms causing errors</li>
+                            <li>Noted significant context-switching overhead impacting productivity</li>
+                        </ul>
+                        <p><strong>Key Observations:</strong> Users had developed complex workarounds that were time-consuming and error-prone, creating significant opportunities for process optimization.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="subheading">Key Research Findings</h3>
+            
+            <div class="findings-grid">
+                <div class="finding-card fade-in">
+                    <h3>Tool Fragmentation</h3>
+                    <p>Users were juggling between multiple platforms (Google Trends, social listening tools, news aggregators, etc.) to get a complete picture of market trends.</p>
+                    <p>This fragmentation led to inconsistent data, duplicate efforts, and critical insights falling through the cracks.</p>
+                </div>
+                
+                <div class="finding-card fade-in">
+                    <h3>Analysis Paralysis</h3>
+                    <p>The abundance of data without clear prioritization or insights led to decision paralysis for many small business owners.</p>
+                    <p>Users struggled to determine which trends were actually relevant to their specific business context.</p>
+                </div>
+                
+                <div class="finding-card fade-in">
+                    <h3>Feature Overload</h3>
+                    <p>Existing enterprise-focused tools overwhelmed small business users with complex features and confusing interfaces.</p>
+                    <p>Most users only utilized 20-30% of the features they were paying for in premium trend analysis tools.</p>
+                </div>
+                
+                <div class="finding-card fade-in">
+                    <h3>Time Constraints</h3>
+                    <p>Small business owners and marketers identified time as their most precious resource, yet were spending 15+ hours weekly on trend analysis.</p>
+                    <p>By the time users identified and analyzed trends, the opportunity to act on them was often diminished.</p>
+                </div>
+            </div>
+            
+            <div class="content-grid" style="margin-top: 60px;">
+                <div class="img-container">
+                    <img src="https://placehold.co/600x400/8F69FF/FFFFFF?text=Research+Synthesis" alt="Research synthesis materials from TrendSpy user interviews">
+                </div>
+                <div class="text-content">
+                    <h3 class="subheading">User Quotes</h3>
+                    <p>Direct feedback from our target users provided powerful insights for our design strategy:</p>
+                    
+                    <div class="quote-box">
+                        <p class="quote-text">I copy-paste between 5 different dashboards daily. It's killing my productivity.</p>
+                        <p class="quote-author">— Marketing Lead at Tech Startup</p>
+                    </div>
+                    
+                    <div class="quote-box">
+                        <p class="quote-text">We're paying for features we never use. I just need a simple way to track trends across platforms.</p>
+                        <p class="quote-author">— Small Business Owner</p>
+                    </div>
+                    
+                    <div class="quote-box">
+                        <p class="quote-text">By the time we spot a trend, it's often too late to capitalize on it.</p>
+                        <p class="quote-author">— Social Media Manager</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Process Section -->
+    <section id="process">
+        <div class="container">
+            <h2 class="section-heading">Design Process</h2>
+            
+            <div class="text-content">
+                <p>Based on our research insights, I developed a user-centered design approach focused on simplicity, consolidation, and actionable insights. I worked closely with the CEO to align on design direction and with our developer to ensure technical feasibility.</p>
+            </div>
+            
+            <div class="process-step fade-in">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Information Architecture</h3>
+                    <p>I created a comprehensive information architecture that organized the complex data ecosystem into an intuitive structure:</p>
+                    
+                    <div class="two-columns" style="margin-top: 20px;">
+                        <div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Primary Navigation</h4>
+                            <ul>
+                                <li><strong>Trend Search:</strong> Finding specific trends with advanced filtering</li>
+                                <li><strong>Custom Dashboards:</strong> Personalized trend monitoring centers</li>
+                                <li><strong>Real-time Monitoring:</strong> Live feeds from various platforms</li>
+                                <li><strong>Reports & Analytics:</strong> Historical data and trend predictions</li>
+                                <li><strong>AI Magic Ball:</strong> AI-powered trend insights and predictions</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Content Organization</h4>
+                            <ul>
+                                <li><strong>Source-based:</strong> Social media, search, news, industry data</li>
+                                <li><strong>Time-based:</strong> Real-time, historical, predictive</li>
+                                <li><strong>Topic-based:</strong> Industry categories, custom topics</li>
+                                <li><strong>Format-based:</strong> Text, images, videos, websites</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="decision-card" style="margin-top: 20px;">
+                        <h3 class="decision-title">Information Architecture Validation</h3>
+                        <p>I used card sorting with users to validate the proposed information architecture. 90% preferred topic-based organization over source-based categorization, which I incorporated into the final IA structure.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="process-step fade-in">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Design System Creation</h3>
+                    <p>I developed a comprehensive design system in Figma with 15 reusable components to ensure consistency across the product:</p>
+                    
+                    <div class="two-columns" style="margin-top: 20px;">
+                        <div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Core Components</h4>
+                            <ul>
+                                <li><strong>Data cards:</strong> Structured components for trend data visualization</li>
+                                <li><strong>Navigation elements:</strong> Consistent global and contextual navigation</li>
+                                <li><strong>Input controls:</strong> Forms, filters, and search interfaces</li>
+                                <li><strong>Feedback systems:</strong> Notifications, alerts, and status indicators</li>
+                                <li><strong>Information hierarchy:</strong> Typographic and color systems</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Design System Benefits</h4>
+                            <ul>
+                                <li><strong>Brand consistency:</strong> Unified look and feel across platforms</li>
+                                <li><strong>Development efficiency:</strong> Reusable components streamlined implementation</li>
+                                <li><strong>Accessibility compliance:</strong> WCAG 2.2 standards built into every component</li>
+                                <li><strong>Responsive behavior:</strong> Consistent user experience across devices</li>
+                                <li><strong>Future scalability:</strong> System designed to accommodate new features</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="img-container" style="margin: 20px 0; transform: rotate(0);">
+                        <img src="https://placehold.co/800x400/4A26A7/FFFFFF?text=TrendSpy+Design+System" alt="TrendSpy design system showing component library in Figma">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="process-step fade-in">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>User Flows & Wireframing</h3>
+                    <p>I mapped key user journeys and created wireframes for the core product functions:</p>
+                    
+                    <div class="image-gallery" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                        <div class="gallery-item">
+                            <img src="https://placehold.co/400x300/6433E0/FFFFFF?text=User+Flow+Diagram" alt="TrendSpy user flow diagram showing the trend discovery journey">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://placehold.co/400x300/8F69FF/FFFFFF?text=Dashboard+Wireframe" alt="TrendSpy dashboard wireframe showing customizable widgets">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://placehold.co/400x300/4A26A7/FFFFFF?text=AI+Interface" alt="TrendSpy AI Magic Ball interface wireframe">
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 20px;"><strong>User Flow Priorities:</strong> I focused on three critical user journeys based on our research:</p>
+                    <ol>
+                        <li>Discovering relevant new trends in user's industry</li>
+                        <li>Monitoring specific topics across multiple platforms</li>
+                        <li>Getting AI-powered insights for decision-making</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="process-step fade-in">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Prototyping & Iteration</h3>
+                    <p>I created interactive prototypes in Figma and planned for iterative feedback sessions:</p>
+                    
+                    <p><strong>Key Design Challenges:</strong></p>
+                    <ul>
+                        <li>Finding the right balance between data density and readability</li>
+                        <li>Creating intuitive visualizations for complex trend relationships</li>
+                        <li>Designing a dashboard that accommodated diverse business needs</li>
+                        <li>Ensuring accessibility while maintaining visual sophistication</li>
+                    </ul>
+                    
+                    <p><strong>Planned Iterations:</strong></p>
+                    <ul>
+                        <li>Initial dashboard simplification to address potential information overload</li>
+                        <li>Redesign of trend cards to highlight actionable insights rather than raw data</li>
+                        <li>Progressive onboarding system to introduce features contextually</li>
+                        <li>Implementing contextual help systems for complex features</li>
+                    </ul>
+                    
+                    <div class="decision-card" style="margin-top: 20px;">
+                        <h3 class="decision-title">Note on Project Status</h3>
+                        <p>TrendSpy is currently in active development. Our design process is ongoing, with usability testing, iterations, and refinements planned for upcoming phases. This case study represents the work completed thus far and our planned approach for continued development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Design Section -->
+    <section id="design" class="alt">
+        <div class="container">
+            <h2 class="section-heading">Design Solution</h2>
+            
+            <div class="content-grid">
+                <div class="text-content">
+                    <h3 class="subheading">Final Design</h3>
+                    <p>My design solution unifies trend analysis from multiple sources into an intuitive platform optimized for small business users, with four key components:</p>
+                    
+                   <div style="margin: 20px 0; display: flex; flex-wrap: wrap; gap: 12px;">
+                        <span class="skill-tag" style="background: var(--dashboard-purple); color: white; padding: 12px 20px; font-size: 1.1rem; font-weight: 600; box-shadow: 0 4px 12px rgba(174, 62, 201, 0.3);">Real-Time Monitoring</span>
+                        <span class="skill-tag" style="background: var(--cyan); color: white; padding: 12px 20px; font-size: 1.1rem; font-weight: 600; box-shadow: 0 4px 12px rgba(76, 195, 207, 0.3);">Niche Discovery</span>
+                        <span class="skill-tag" style="background: var(--light-dashboard-purple); color: white; padding: 12px 20px; font-size: 1.1rem; font-weight: 600; box-shadow: 0 4px 12px rgba(207, 94, 230, 0.3);">Historical Analysis</span>
+                        <span class="skill-tag" style="background: var(--navy); color: white; padding: 12px 20px; font-size: 1.1rem; font-weight: 600; box-shadow: 0 4px 12px rgba(13, 14, 43, 0.3);">AI Magic Ball</span>
+                    </div>
+                    
+                    <p>The interface balances data richness with simplicity, focusing on surfacing actionable insights rather than overwhelming users with raw data, while maintaining WCAG 2.2 accessibility standards.</p>
+                </div>
+                
+                <div class="img-container">
+                    <img src="https://placehold.co/600x400/0d0e2b/FFFFFF?text=TrendSpy+Dashboard" alt="TrendSpy dashboard final design showing unified trend analysis">
+                </div>
+            </div>
+            
+            <h3 class="subheading" style="margin-top: 60px;">Key Features</h3>
+            
+            <div class="feature-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-Time Trend Tracking</h3>
+                    <p>I designed a unified monitoring system that aggregates trends across social media, news outlets, and forums in real-time, translating complex data into actionable insights.</p>
+                    <ul>
+                        <li>Cross-platform data aggregation</li>
+                        <li>Visual trend indicators</li>
+                        <li>Configurable alert thresholds</li>
+                        <li>Trend verification tools</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Niche Discovery Engine</h3>
+                    <p>I created an interface for the proprietary algorithm that identifies emerging trends specific to each user's industry, helping businesses discover opportunities early.</p>
+                    <ul>
+                        <li>Industry-specific filtering</li>
+                        <li>Competitive trend comparison</li>
+                        <li>Opportunity scoring system</li>
+                        <li>Visual trend maps</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📈</div>
+                    <h3>Historical Analysis</h3>
+                    <p>I designed interactive visualizations allowing users to analyze trend evolution over time and identify patterns for predicting future movements.</p>
+                    <ul>
+                        <li>Interactive time-series charts</li>
+                        <li>Pattern highlighting</li>
+                        <li>Comparative analysis tools</li>
+                        <li>Predictive indicators</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔮</div>
+                    <h3>AI Magic Ball</h3>
+                    <p>I designed an AI-powered assistant that provides trend insights, predictions, and answers to business questions in natural language.</p>
+                    <ul>
+                        <li>Trend-based Q&A system</li>
+                        <li>Predictive trend analysis</li>
+                        <li>Widget recommendations</li>
+                        <li>Conversation history</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3 class="subheading" style="margin-top: 60px; text-align: center;">Interface Design</h3>
+            
+            <div class="mobile-showcase">
+                <div>
+                    <div class="mobile-device">
+                        <div class="mobile-screen">
+                            <img src="https://placehold.co/280x560/0d0e2b/FFFFFF?text=Dashboard" alt="TrendSpy dashboard on mobile">
+                        </div>
+                    </div>
+                    <div class="screen-label">Main Dashboard</div>
+                </div>
+                
+                <div>
+                    <div class="mobile-device">
+                        <div class="mobile-screen">
+                            <img src="https://placehold.co/280x560/ae3ec9/FFFFFF?text=Widget+Library" alt="TrendSpy widget library screen showing categorized widgets">
+                        </div>
+                    </div>
+                    <div class="screen-label">Widget Library</div>
+                </div>
+                
+                <div>
+                    <div class="mobile-device">
+                        <div class="mobile-screen">
+                            <img src="https://placehold.co/280x560/4cc3cf/FFFFFF?text=AI+Magic+Ball" alt="TrendSpy AI chat interface with trend insights">
+                        </div>
+                    </div>
+                    <div class="screen-label">AI Magic Ball</div>
+                </div>
+            </div>
+            
+            <div class="content-grid" style="margin-top: 50px;">
+                <div class="text-content">
+                    <h3 class="subheading">Widget Library</h3>
+                    <p>The Widget Library provides users with customizable trend analysis components that can be combined to create personalized dashboards. Each widget offers specific insights into market trends, social media analysis, or industry-specific metrics.</p>
+                    <p>Users can filter widgets by category (World News, Business, Tech), customize data sources, and save preferred combinations. This modular approach allows for maximum flexibility while maintaining a consistent interface.</p>
+                </div>
+                <div class="img-container">
+                    <img src="https://placehold.co/600x400/0d0e2b/FFFFFF?text=Widget+Library+Grid+View" alt="TrendSpy widget library showing categorized trend analysis tools">
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <div class="img-container">
+                    <img src="https://placehold.co/600x400/ae3ec9/FFFFFF?text=AI+Trend+Analysis" alt="TrendSpy AI assistant providing trend insights and predictions">
+                </div>
+                <div class="text-content">
+                    <h3 class="subheading">AI-Powered Trend Analysis</h3>
+                    <p>The AI Magic Ball feature helps users discover insights they might otherwise miss. Users can ask questions in natural language, and receive trend predictions based on comprehensive data analysis.</p>
+                    <p>The AI assistant considers the user's profile, business goals, and industry context to provide relevant recommendations. Conversation history is saved for future reference, creating a valuable knowledge repository.</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <div class="text-content">
+                    <h3 class="subheading">Mobile-First Approach</h3>
+                    <p>A key aspect of TrendSpy's design is its mobile-responsive interface, allowing users to track trends on the go. The mobile experience preserves core functionality while adapting to smaller screens.</p>
+                    <p>Key mobile features include trend alerts, simplified data visualizations, and the ability to save trend reports for offline viewing. Gesture controls make navigating complex data intuitive on touch devices.</p>
+                </div>
+                <div class="img-container">
+                    <img src="https://placehold.co/600x400/4cc3cf/FFFFFF?text=Mobile+Experience" alt="TrendSpy mobile experience showing responsive design">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Section -->
+    <section id="testing">
+        <div class="container">
+            <h2 class="section-heading">Implementation Plan</h2>
+            
+            <div class="content-grid">
+                <div class="text-content">
+                    <h3 class="subheading">Front-End Development</h3>
+                    <p>As both designer and developer, I'm uniquely positioned to ensure the design vision is faithfully implemented. I'm leading front-end development using React.js, translating designs into functional components:</p>
+                    
+                    <ul>
+                        <li><strong>Component-based architecture:</strong> Creating reusable UI elements</li>
+                        <li><strong>Responsive design:</strong> Mobile-first approach ensuring cross-device compatibility</li>
+                        <li><strong>Performance optimization:</strong> Code splitting and lazy loading for fast loading</li>
+                        <li><strong>State management:</strong> Efficient data handling using React hooks and context</li>
+                    </ul>
+                    
+                    <div class="decision-card" style="margin-top: 20px;">
+                        <h3 class="decision-title">Collaboration with Backend Developer</h3>
+                        <p>I'm working closely with our backend developer to ensure seamless integration between the UI and data processing systems. This collaboration is essential to create an experience where complex trend data can be presented in an intuitive, actionable way for non-technical users.</p>
+                    </div>
+                </div>
+                
+                <div class="img-container">
+                    <img src="https://placehold.co/600x400/4A26A7/FFFFFF?text=React+Component+Development" alt="TrendSpy React component development">
+                </div>
+            </div>
+            
+            <div class="process-step fade-in">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Data Visualization Implementation</h3>
+                    <p>I'm implementing sophisticated data visualization components to present complex trend data in an accessible format:</p>
+                    
+                    <ul>
+                        <li><strong>Custom chart components:</strong> Building specialized visualization tools using React.js and data visualization libraries</li>
+                        <li><strong>Interactive elements:</strong> Hover states, tooltips, and zooming capabilities for data exploration</li>
+                        <li><strong>Responsive visualizations:</strong> Charts and graphs that adapt to different screen sizes</li>
+                        <li><strong>Accessible data representation:</strong> Alternative text descriptions and keyboard interactions for charts</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="process-step fade-in">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>AI Magic Ball Implementation</h3>
+                    <p>I've designed and am helping implement an AI-driven insights system that will translate complex trend data into actionable business recommendations:</p>
+                    
+                    <ul>
+                        <li><strong>Insight generation:</strong> UI for displaying AI-generated trend insights</li>
+                        <li><strong>Recommendation engine:</strong> Interface for business-specific action items</li>
+                        <li><strong>Explanation components:</strong> Visual elements explaining AI reasoning</li>
+                        <li><strong>Feedback mechanisms:</strong> User feedback loops to improve AI recommendations</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="process-step fade-in">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Planned Usability Testing</h3>
+                    <p>I've designed a comprehensive usability testing plan to evaluate the effectiveness of our solution once implementation is complete:</p>
+                    
+                    <ul>
+                        <li><strong>Task-based testing:</strong> Evaluating how efficiently users can complete key tasks</li>
+                        <li><strong>Preference testing:</strong> Gathering feedback on visual design and information hierarchy</li>
+                        <li><strong>System Usability Scale (SUS):</strong> Measuring overall usability with industry-standard metrics</li>
+                        <li><strong>Accessibility evaluation:</strong> Testing with assistive technologies to ensure WCAG 2.2 compliance</li>
+                    </ul>
+                    
+                    <div class="decision-card" style="margin-top: 20px;">
+                        <h3 class="decision-title">Target Metrics</h3>
+                        <p>We've established specific performance targets for our usability testing, including a 90%+ task completion rate, average time to first insight under 3 minutes, and an SUS score above 80. These metrics will guide our iterations and refinements after initial testing.</p>
+                    </div>
+                </div>
+            </div>
+            
+<div class="process-step fade-in">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Landing Page Integration</h3>
+                    <p>I leveraged my previous experience designing and implementing the TrendSpy marketing landing page to ensure a cohesive user experience from acquisition to product use:</p>
+                    
+                    <ul>
+                        <li><strong>Conversion-focused design:</strong> Clear value proposition and strategic CTAs</li>
+                        <li><strong>Brand consistency:</strong> Maintained visual language across marketing and product</li>
+                        <li><strong>Performance optimization:</strong> Fast loading times and smooth animations</li>
+                        <li><strong>WCAG 2.2 compliance:</strong> Accessibility for all users</li>
+                    </ul>
+                    
+                    <div class="decision-card" style="margin-top: 20px;">
+                        <h3 class="decision-title">Landing Page Optimization</h3>
+                        <p>Through A/B testing of the landing page, I identified key optimizations that increased sign-up intent by 40% and improved comprehension scores. These insights are valuable for the application UI as well.</p>
+ <p style="margin-top: 15px;"><strong>For a detailed breakdown of the landing page design process, including conversion optimization strategies and user testing insights, please see: <a href="/trendspy-landing-page-case-study" style="color: var(--dashboard-purple); text-decoration: underline; font-weight: 600;">TrendSpy Landing Page Case Study</a></strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results & Impact Section -->
+    <section id="results" class="alt">
+        <div class="container">
+            <h2 class="section-heading">Current Status & Impact</h2>
+            
+            <div class="text-content">
+                <p>TrendSpy is in active development with key features being implemented. Based on initial designs and stakeholder feedback, we're projecting significant improvements in efficiency and decision-making capabilities for our target users.</p>
+            </div>
+            
+            <div class="results-grid">
+                <div class="result-item fade-in">
+                    <div class="result-number">40%</div>
+                    <p class="result-text">Projected reduction in time spent on trend analysis activities</p>
+                </div>
+                
+                <div class="result-item fade-in">
+                    <div class="result-number">60%</div>
+                    <p class="result-text">Estimated cost savings compared to using multiple trend tools</p>
+                </div>
+                
+                <div class="result-item fade-in">
+                    <div class="result-number">85%</div>
+                    <p class="result-text">Initial stakeholder satisfaction with prototype designs</p>
+                </div>
+                
+                <div class="result-item fade-in">
+                    <div class="result-number">3x</div>
+                    <p class="result-text">Projected increase in trend discovery efficiency</p>
+                </div>
+            </div>
+            
+            <div class="two-columns" style="margin-top: 60px;">
+                <div>
+                    <h3 class="subheading">Development Progress</h3>
+                    <ul>
+                        <li><strong>Design system:</strong> Complete (15 components)</li>
+                        <li><strong>Core wireframes:</strong> Complete</li>
+                        <li><strong>Dashboard prototypes:</strong> 90% complete</li>
+                        <li><strong>AI Magic Ball design:</strong> 75% complete</li>
+                        <li><strong>Frontend implementation:</strong> 40% complete</li>
+                        <li><strong>Backend API integration:</strong> In planning phase</li>
+                    </ul>
+                    
+                    <div class="quote-box">
+                        <p class="quote-text">The design approach you've taken with TrendSpy is exactly what our team needs. The focus on simplicity without sacrificing depth is going to be a game-changer for our trend analysis.</p>
+                        <p class="quote-author">— Beta Program Participant</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="subheading">Technical Implementation</h3>
+                    
+                    <div class="reflection-box">
+                        <h4 class="reflection-title">Accessibility Implementation</h4>
+                        <ul style="margin-top: 15px; color: black;">
+                            <li>Implemented WCAG 2.2 AA standards in all design components</li>
+                            <li>Designed for complete keyboard navigability</li>
+                            <li>Ensured screen reader compatibility with proper ARIA attributes</li>
+                            <li>Maintained sufficient color contrast for all text and UI elements</li>
+                            <li>Created responsive designs that work across all device sizes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="reflection-box">
+                        <h4 class="reflection-title">Widget System Architecture</h4>
+                        <ul style="margin-top: 15px; color: black;">
+                            <li>Designed reusable widget component framework</li>
+                            <li>Created consistent data visualization standards</li>
+                            <li>Implemented drag-and-drop widget customization</li>
+                            <li>Built category-based widget organization system</li>
+                            <li>Developed widget sharing and collaboration features</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="subheading" style="margin-top: 80px; text-align: center;">Next Steps</h3>
+
+            <div class="next-steps-container">
+                <div class="next-steps-intro">
+                    <p>As we continue implementation, I'm focused on the following priorities to bring TrendSpy to market:</p>
+                </div>
+                
+                <div class="next-steps-grid">
+                    <div class="next-step-item">
+                        <div class="next-step-header">
+                            <h3>Usability Testing</h3>
+                        </div>
+                        <div class="next-step-content">
+                            <p>Conduct comprehensive tests with our target audience to validate our design decisions.</p>
+                            <ul>
+                                <li>Recruit diverse test participants</li>
+                                <li>Design task-based testing scenarios</li>
+                                <li>Collect qualitative and quantitative feedback</li>
+                                <li>Analyze results to identify improvement areas</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="next-step-item">
+                        <div class="next-step-header">
+                            <h3>Design Iteration</h3>
+                        </div>
+                        <div class="next-step-content">
+                            <p>Refine the design based on testing feedback and stakeholder input.</p>
+                            <ul>
+                                <li>Address usability pain points</li>
+                                <li>Optimize information hierarchy</li>
+                                <li>Enhance visual design elements</li>
+                                <li>Improve accessibility features</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="next-step-item">
+                        <div class="next-step-header">
+                            <h3>Feature Development</h3>
+                        </div>
+                        <div class="next-step-content">
+                            <p>Complete implementation of core features and prepare for beta launch.</p>
+                            <ul>
+                                <li>Finalize dashboard implementation</li>
+                                <li>Complete trend visualization components</li>
+                                <li>Integrate AI Magic Ball functionality</li>
+                                <li>Implement user authentication system</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="next-step-item">
+                        <div class="next-step-header">
+                            <h3>Beta Program</h3>
+                        </div>
+                        <div class="next-step-content">
+                            <p>Launch a controlled beta to gather real-world feedback before wider release.</p>
+                            <ul>
+                                <li>Select diverse beta participants</li>
+                                <li>Implement feedback collection mechanisms</li>
+                                <li>Monitor usage patterns and engagement</li>
+                                <li>Establish rapid iteration cycles</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="reflection-box" style="margin-top: 80px;">
+                <h4 class="reflection-title">Skills Showcased</h4>
+                <p>This ongoing project has allowed me to demonstrate and develop several key skills:</p>
+                <ul>
+                    <li><strong>User-centered design:</strong> Transforming complex user needs into intuitive interfaces</li>
+                    <li><strong>Front-end development:</strong> Building sophisticated React components and data visualizations</li>
+                    <li><strong>Accessibility implementation:</strong> Making complex data accessible to all users</li>
+                    <li><strong>Research methodology:</strong> Gathering actionable insights through structured research</li>
+                    <li><strong>Cross-functional collaboration:</strong> Working effectively with stakeholders and developers</li>
+                    <li><strong>Design systems:</strong> Creating scalable, consistent component libraries</li>
+                    <li><strong>AI interface design:</strong> Making complex AI capabilities approachable and useful</li>
+                </ul>
+            </div>
+            
+            <div class="decision-card" style="margin-top: 50px;">
+                <h3 class="decision-title">Confidentiality Note</h3>
+                <p>Some specific details about TrendSpy's proprietary technology and business strategy have been omitted from this case study for confidentiality reasons. I'd be happy to discuss these aspects in more detail during interviews, under appropriate confidentiality agreements.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <a href="#overview" class="bottom-nav-item">
+            <svg class="bottom-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Overview
+        </a>
+        <a href="#research" class="bottom-nav-item">
+            <svg class="bottom-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            Research
+        </a>
+        <a href="#process" class="bottom-nav-item">
+            <svg class="bottom-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            Process
+        </a>
+        <a href="#design" class="bottom-nav-item">
+            <svg class="bottom-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                <circle cx="11" cy="11" r="2"></circle>
+            </svg>
+            Design
+        </a>
+        <a href="#results" class="bottom-nav-item">
+            <svg class="bottom-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            Results
+        </a>
+    </div>
+
+    <script>
+        // Handle smooth scrolling for navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for navigation links
+            const navDots = document.querySelectorAll('.nav-dot');
+            const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
+            
+            function smoothScroll(e, targetId) {
+                e.preventDefault();
+                
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+            
+            navDots.forEach(dot => {
+                dot.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    smoothScroll(e, targetId);
+                });
+            });
+            
+            bottomNavItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    smoothScroll(e, targetId);
+                });
+            });
+            
+            // Update active navigation on scroll
+            const sections = document.querySelectorAll('section');
+            
+            function updateActiveNav() {
+                let currentSectionId = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const scrollPosition = window.pageYOffset;
+                    
+                    if (scrollPosition >= sectionTop - 200 && scrollPosition < sectionTop + sectionHeight - 200) {
+                        currentSectionId = '#' + section.getAttribute('id');
+                    }
+                });
+                
+                // Update side navigation dots
+                navDots.forEach(dot => {
+                    dot.classList.remove('active');
+                    if (dot.getAttribute('href') === currentSectionId) {
+                        dot.classList.add('active');
+                    }
+                });
+                
+                // Update bottom navigation items
+                bottomNavItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === currentSectionId) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+            
+            // Animation for elements on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            function checkFadeElements() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Initialize
+            updateActiveNav();
+            checkFadeElements();
+            
+            // Add scroll event listeners
+            window.addEventListener('scroll', function() {
+                updateActiveNav();
+                checkFadeElements();
+            });
+        });
+ </script>
+</body>
+</html>
