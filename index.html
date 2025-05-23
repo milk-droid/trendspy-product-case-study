@@ -288,6 +288,28 @@ body {
     }
 }
 
+/* Project Status Alert */
+.project-status-alert {
+    background: rgba(174, 62, 201, 0.1);
+    border-left: 4px solid var(--dashboard-purple);
+    padding: 20px 25px;
+    margin: 30px 0;
+    border-radius: 0 10px 10px 0;
+    position: relative;
+}
+
+.project-status-alert h3 {
+    color: var(--dashboard-purple);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.project-status-alert p {
+    color: var(--accent);
+    line-height: 1.6;
+}
+
 /* Project Info Bar */
 .project-info-bar {
     display: flex;
@@ -788,12 +810,41 @@ section.alt {
     }
 }
 
-/* Research Findings */
+/* Research Findings - Updated with softer hover effect */
 .findings-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin: 40px 0;
+}
+
+.finding-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-left: 4px solid var(--dashboard-purple);
+}
+
+.finding-card:nth-child(2) {
+    border-left-color: var(--purple);
+}
+
+.finding-card:nth-child(3) {
+    border-left-color: var(--teal);
+}
+
+.finding-card:nth-child(4) {
+    border-left-color: var(--green);
+}
+
+.finding-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    border-radius: 25px;
 }
 
 .finding-card h3 {
@@ -829,60 +880,6 @@ section.alt {
 .decision-title {
     font-weight: 600;
     color: var(--dashboard-purple);
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}nth-child(2) {
-    border-left-color: var(--purple);
-}
-
-.finding-card:nth-child(3) {
-    border-left-color: var(--teal);
-}
-
-.finding-card:nth-child(4) {
-    border-left-color: var(--green);
-}
-
-.finding-card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
-
-.finding-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    color: var(--primary);
-    font-weight: 600;
-}
-
-@media (max-width: 576px) {
-    .findings-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .finding-card {
-        padding: 20px;
-    }
-    
-    .finding-card h3 {
-        font-size: 1.2rem;
-    }
-}
-
-/* Decision Cards */
-.decision-card {
-    background: var(--light);
-    border-radius: 15px;
-    padding: 25px;
-    margin: 25px 0;
-    border-left: 4px solid var(--primary);
-}
-
-.decision-title {
-    font-weight: 600;
-    color: var(--primary-dark);
     margin-bottom: 15px;
     display: flex;
     align-items: center;
@@ -1019,70 +1016,6 @@ section.alt {
     font-size: 2rem;
     margin-bottom: 20px;
     color: var(--dashboard-purple);
-}
-
-/* Mobile showcase */
-.mobile-showcase {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin: 60px 0;
-    flex-wrap: wrap;
-}
-
-.mobile-device {
-    background: #121212;
-    border-radius: 40px;
-    padding: 12px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    position: relative;
-    width: 280px;
-    margin-bottom: 20px;
-}
-
-.mobile-device::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 30px;
-    background: #121212;
-    border-radius: 0 0 20px 20px;
-    z-index: 2;
-}
-
-.mobile-screen {
-    overflow: hidden;
-    border-radius: 30px;
-    height: 560px;
-}
-
-.mobile-screen img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.screen-label {
-    text-align: center;
-    margin-top: 20px;
-    font-weight: 600;
-    color: var(--primary);
-}
-
-@media (max-width: 992px) {
-    .mobile-showcase {
-        gap: 30px;
-    }
-}
-
-@media (max-width: 576px) {
-    .mobile-showcase {
-        margin: 40px 0;
-    }
 }
 
 /* Results Section */
@@ -1490,6 +1423,31 @@ section.alt:last-of-type {
     bottom: 0;
     margin-bottom: 0;
 }
+
+/* Image placeholders */
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 20px;
+    aspect-ratio: 16/9;
+}
+
+.gallery-placeholder {
+    aspect-ratio: 16/10;
+}
+
+.dashboard-placeholder {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--dark-navy) 100%);
+    color: rgba(255,255,255,0.6);
+}
 </style>
 </head>
 <body>
@@ -1512,13 +1470,19 @@ section.alt:last-of-type {
             <div class="hero-content">
                 <span class="role-badge">Lead Product Designer + Front-End Developer</span>
                 <h1>TREND<span>SPY</span></h1>
-                <p>How I transformed market research fragmentation into an intuitive trend analysis platform that helps small businesses reduce analysis time by 40% and make data-driven decisions.</p>
+                <p>How I transformed market research fragmentation into an intuitive analysis platform that helps businesses make data-driven decisions 40% faster.</p>
             </div>
         </div>
     </section>
 
     <!-- Project Info -->
     <div class="container">
+        <!-- Project Status Alert - Moved to top -->
+        <div class="project-status-alert">
+            <h3>Note on Project Status</h3>
+            <p>TrendSpy is currently in active development. This case study represents the work completed thus far, with usability testing and iterations planned for upcoming phases. Some specific details have been abstracted to protect proprietary information, but I'm happy to discuss the process in more detail during interviews.</p>
+        </div>
+        
         <div class="project-info-bar fade-in">
             <div class="project-meta">
                 <div class="meta-item">
@@ -1553,33 +1517,33 @@ section.alt:last-of-type {
                     <div class="overview-grid">
                         <div class="overview-card">
                             <h3>The Challenge</h3>
-                            <p>Small businesses waste 40% of their trend analysis time juggling multiple platforms, leading to missed market opportunities, excessive costs, and delayed decision-making.</p>
+                            <p>Small businesses waste 40% of their analysis time juggling multiple platforms, leading to missed opportunities and delayed decision-making.</p>
                             <div class="challenge-statement">
-                                <strong>How might we create a unified trend analysis solution that helps small businesses identify market opportunities faster?</strong>
+                                <strong>How might we create a unified solution that helps businesses identify market opportunities faster?</strong>
                             </div>
                         </div>
                         
                         <div class="overview-card">
                             <h3>Our Solution</h3>
-                            <p>TrendSpy is a comprehensive trend analysis platform that consolidates data from social media, search engines, news sources, and industry-specific feeds into one intuitive interface.</p>
-                            <p>The platform offers personalized trend alerts, customizable dashboards, and AI-powered insights tailored to small business needs.</p>
+                            <p>TrendSpy is a comprehensive analysis platform that consolidates data from multiple sources into one intuitive interface.</p>
+                            <p>The platform offers personalized alerts, customizable dashboards, and AI-powered insights tailored to business needs.</p>
                         </div>
                         
                         <div class="overview-card">
                             <h3>Key Features</h3>
                             <ul>
-                                <li>Real-time trend tracking across multiple platforms</li>
-                                <li>Industry-specific trend discovery engine</li>
-                                <li>Historical trend analysis with prediction tools</li>
+                                <li>Real-time tracking across multiple platforms</li>
+                                <li>Industry-specific discovery engine</li>
+                                <li>Historical analysis with prediction tools</li>
                                 <li>Customizable dashboards and alerts</li>
-                                <li>AI Magic Ball for trend insights and predictions</li>
+                                <li>AI-powered insights and predictions</li>
                             </ul>
                         </div>
                         
                         <div class="overview-card">
                             <h3>My Contribution</h3>
                             <ul>
-                                <li>Led user research with 12 stakeholders across 6 companies</li>
+                                <li>Led user research with 12 stakeholders</li>
                                 <li>Created a design system with 15 reusable components</li>
                                 <li>Led UX and front-end development with React.js</li>
                                 <li>Implemented WCAG 2.2 accessibility standards</li>
@@ -1594,12 +1558,10 @@ section.alt:last-of-type {
                 <div class="text-content">
                     <h3 class="subheading">My Role & Responsibilities</h3>
                     <p>As both the lead product designer and front-end developer, I work directly with the CEO and our backend developer to create TrendSpy from concept to implementation. This dual role allows me to maintain the design vision throughout the entire product development process.</p>
-                    <p>The CEO provides the initial concept and business requirements, while I'm responsible for translating these into a user-centered design and functional front-end. I collaborate closely with our backend developer to ensure seamless integration between the UI and data processing systems.</p>
+                    <p>I'm responsible for translating business requirements into user-centered designs and functional front-end code, ensuring seamless integration between UI and data systems.</p>
                 </div>
                 
-                <div class="img-container">
-                    <img src="https://placehold.co/600x400/6433E0/FFFFFF?text=Team+Collaboration" alt="Collaborative design session with CEO and developer">
-                </div>
+
             </div>
         </div>
     </section>
@@ -1610,7 +1572,7 @@ section.alt:last-of-type {
             <h2 class="section-heading">Research</h2>
             
             <div class="text-content full-width">
-                <p>I led a comprehensive research effort to understand how small businesses currently analyze market trends, what tools they use, and their pain points in the process. Working closely with the CEO, we developed a research plan focused on in-depth qualitative insights.</p>
+                <p>I led a comprehensive research effort to understand how businesses currently analyze market data and their pain points in the process. We developed a research plan focused on in-depth qualitative insights.</p>
             </div>
             
             <div class="process-timeline">
@@ -1620,13 +1582,7 @@ section.alt:last-of-type {
                         <div class="process-heading">
                             <h3 class="process-title">Competitive Analysis</h3>
                         </div>
-                        <p>I conducted comprehensive analysis of existing market solutions to identify gaps and opportunities:</p>
-                        <ul>
-                            <li><strong>Exploding Topics</strong> - Cross-platform data analysis with vetted trends</li>
-                            <li><strong>Google Trends</strong> - Basic search volume data with limited trend analysis</li>
-                            <li><strong>BuzzSumo</strong> - Social media-focused content trend tracking</li>
-                            <li><strong>SEMrush Trends</strong> - Marketing-focused analysis with competitor tracking</li>
-                        </ul>
+                        <p>I conducted comprehensive analysis of existing market solutions to identify gaps and opportunities. I analyzed various platforms for their approach to data aggregation, user interfaces, and pricing models.</p>
                         <p><strong>Key Finding:</strong> While many solutions existed, none provided a truly unified, affordable platform specifically designed for small business needs.</p>
                     </div>
                 </div>
@@ -1637,15 +1593,9 @@ section.alt:last-of-type {
                         <div class="process-heading">
                             <h3 class="process-title">Stakeholder Interviews</h3>
                         </div>
-                        <p>I personally conducted 12 in-depth interviews with stakeholders across 6 companies:</p>
-                        <ul>
-                            <li>2 startups</li>
-                            <li>2 small businesses</li>
-                            <li>2 mid-sized companies</li>
-                        </ul>
-                        <p>Each 60-minute session focused on current workflows, pain points, and tool usage patterns, with a mix of decision-makers and day-to-day users to ensure comprehensive insights.</p>
+                        <p>I personally conducted 12 in-depth interviews with stakeholders across 6 companies, including startups and established businesses. Each 60-minute session focused on current workflows, pain points, and tool usage patterns.</p>
                         <div class="decision-card" style="margin: 15px 0 0; padding: 15px;">
-                            <p style="margin-bottom: 0;"><strong>Key Insight:</strong> Users were spending an average of 15+ hours weekly on trend analysis, with 40% of that time wasted on platform switching and data consolidation.</p>
+                            <p style="margin-bottom: 0;"><strong>Key Insight:</strong> Users were spending 15+ hours weekly on analysis, with 40% of that time wasted on platform switching and data consolidation.</p>
                         </div>
                     </div>
                 </div>
@@ -1656,14 +1606,14 @@ section.alt:last-of-type {
                         <div class="process-heading">
                             <h3 class="process-title">Field Studies</h3>
                         </div>
-                        <p>I spent full days with marketing teams observing their actual workflow patterns, capturing real-time frustrations and workarounds they had developed:</p>
+                        <p>I spent full days with marketing teams observing their actual workflow patterns:</p>
                         <ul>
-                            <li>Observed 3.2 different platforms being used on average for trend analysis</li>
-                            <li>Documented 15+ manual copy-paste operations per analysis session</li>
-                            <li>Identified inconsistent data formats across platforms causing errors</li>
-                            <li>Noted significant context-switching overhead impacting productivity</li>
+                            <li>Observed multiple platforms being used for analysis</li>
+                            <li>Documented numerous manual data operations per session</li>
+                            <li>Identified inconsistent data formats causing errors</li>
+                            <li>Noted significant context-switching overhead</li>
                         </ul>
-                        <p><strong>Key Observations:</strong> Users had developed complex workarounds that were time-consuming and error-prone, creating significant opportunities for process optimization.</p>
+                        <p><strong>Key Observations:</strong> Users had developed complex workarounds that were time-consuming and error-prone.</p>
                     </div>
                 </div>
             </div>
@@ -1673,32 +1623,34 @@ section.alt:last-of-type {
             <div class="findings-grid">
                 <div class="finding-card fade-in">
                     <h3>Tool Fragmentation</h3>
-                    <p>Users were juggling between multiple platforms (Google Trends, social listening tools, news aggregators, etc.) to get a complete picture of market trends.</p>
+                    <p>Users were juggling between multiple platforms to get a complete picture of market data.</p>
                     <p>This fragmentation led to inconsistent data, duplicate efforts, and critical insights falling through the cracks.</p>
                 </div>
                 
                 <div class="finding-card fade-in">
                     <h3>Analysis Paralysis</h3>
-                    <p>The abundance of data without clear prioritization or insights led to decision paralysis for many small business owners.</p>
-                    <p>Users struggled to determine which trends were actually relevant to their specific business context.</p>
+                    <p>The abundance of data without clear prioritization led to decision paralysis for many business owners.</p>
+                    <p>Users struggled to determine which insights were actually relevant to their specific business context.</p>
                 </div>
                 
                 <div class="finding-card fade-in">
                     <h3>Feature Overload</h3>
-                    <p>Existing enterprise-focused tools overwhelmed small business users with complex features and confusing interfaces.</p>
-                    <p>Most users only utilized 20-30% of the features they were paying for in premium trend analysis tools.</p>
+                    <p>Existing enterprise-focused tools overwhelmed users with complex features and confusing interfaces.</p>
+                    <p>Most users only utilized a small fraction of the features they were paying for.</p>
                 </div>
                 
                 <div class="finding-card fade-in">
                     <h3>Time Constraints</h3>
-                    <p>Small business owners and marketers identified time as their most precious resource, yet were spending 15+ hours weekly on trend analysis.</p>
-                    <p>By the time users identified and analyzed trends, the opportunity to act on them was often diminished.</p>
+                    <p>Business owners identified time as their most precious resource, yet were spending excessive hours on analysis.</p>
+                    <p>By the time users identified and analyzed opportunities, the window to act was often diminished.</p>
                 </div>
             </div>
             
             <div class="content-grid" style="margin-top: 60px;">
                 <div class="img-container">
-                    <img src="https://placehold.co/600x400/8F69FF/FFFFFF?text=Research+Synthesis" alt="Research synthesis materials from TrendSpy user interviews">
+                    <div class="image-placeholder">
+                        Research Synthesis Workshop
+                    </div>
                 </div>
                 <div class="text-content">
                     <h3 class="subheading">User Quotes</h3>
@@ -1710,13 +1662,8 @@ section.alt:last-of-type {
                     </div>
                     
                     <div class="quote-box">
-                        <p class="quote-text">We're paying for features we never use. I just need a simple way to track trends across platforms.</p>
+                        <p class="quote-text">We're paying for features we never use. I just need a simple way to track across platforms.</p>
                         <p class="quote-author">— Small Business Owner</p>
-                    </div>
-                    
-                    <div class="quote-box">
-                        <p class="quote-text">By the time we spot a trend, it's often too late to capitalize on it.</p>
-                        <p class="quote-author">— Social Media Manager</p>
                     </div>
                 </div>
             </div>
@@ -1729,40 +1676,18 @@ section.alt:last-of-type {
             <h2 class="section-heading">Design Process</h2>
             
             <div class="text-content">
-                <p>Based on our research insights, I developed a user-centered design approach focused on simplicity, consolidation, and actionable insights. I worked closely with the CEO to align on design direction and with our developer to ensure technical feasibility.</p>
+                <p>Based on our research insights, I developed a user-centered design approach focused on simplicity, consolidation, and actionable insights.</p>
             </div>
             
             <div class="process-step fade-in">
                 <div class="step-number">1</div>
                 <div class="step-content">
                     <h3>Information Architecture</h3>
-                    <p>I created a comprehensive information architecture that organized the complex data ecosystem into an intuitive structure:</p>
-                    
-                    <div class="two-columns" style="margin-top: 20px;">
-                        <div>
-                            <h4 style="color: var(--primary); margin-bottom: 10px;">Primary Navigation</h4>
-                            <ul>
-                                <li><strong>Trend Search:</strong> Finding specific trends with advanced filtering</li>
-                                <li><strong>Custom Dashboards:</strong> Personalized trend monitoring centers</li>
-                                <li><strong>Real-time Monitoring:</strong> Live feeds from various platforms</li>
-                                <li><strong>Reports & Analytics:</strong> Historical data and trend predictions</li>
-                                <li><strong>AI Magic Ball:</strong> AI-powered trend insights and predictions</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--primary); margin-bottom: 10px;">Content Organization</h4>
-                            <ul>
-                                <li><strong>Source-based:</strong> Social media, search, news, industry data</li>
-                                <li><strong>Time-based:</strong> Real-time, historical, predictive</li>
-                                <li><strong>Topic-based:</strong> Industry categories, custom topics</li>
-                                <li><strong>Format-based:</strong> Text, images, videos, websites</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <p>I created a comprehensive information architecture that organized the complex data ecosystem into an intuitive structure. Using card sorting with users, I validated that 90% preferred topic-based organization over source-based categorization.</p>
                     
                     <div class="decision-card" style="margin-top: 20px;">
-                        <h3 class="decision-title">Information Architecture Validation</h3>
-                        <p>I used card sorting with users to validate the proposed information architecture. 90% preferred topic-based organization over source-based categorization, which I incorporated into the final IA structure.</p>
+                        <h3 class="decision-title">Design Decision</h3>
+                        <p>The final IA structure prioritizes user mental models over technical data organization, making the platform more intuitive for non-technical users.</p>
                     </div>
                 </div>
             </div>
@@ -1771,33 +1696,18 @@ section.alt:last-of-type {
                 <div class="step-number">2</div>
                 <div class="step-content">
                     <h3>Design System Creation</h3>
-                    <p>I developed a comprehensive design system in Figma with 15 reusable components to ensure consistency across the product:</p>
-                    
-                    <div class="two-columns" style="margin-top: 20px;">
-                        <div>
-                            <h4 style="color: var(--primary); margin-bottom: 10px;">Core Components</h4>
-                            <ul>
-                                <li><strong>Data cards:</strong> Structured components for trend data visualization</li>
-                                <li><strong>Navigation elements:</strong> Consistent global and contextual navigation</li>
-                                <li><strong>Input controls:</strong> Forms, filters, and search interfaces</li>
-                                <li><strong>Feedback systems:</strong> Notifications, alerts, and status indicators</li>
-                                <li><strong>Information hierarchy:</strong> Typographic and color systems</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--primary); margin-bottom: 10px;">Design System Benefits</h4>
-                            <ul>
-                                <li><strong>Brand consistency:</strong> Unified look and feel across platforms</li>
-                                <li><strong>Development efficiency:</strong> Reusable components streamlined implementation</li>
-                                <li><strong>Accessibility compliance:</strong> WCAG 2.2 standards built into every component</li>
-                                <li><strong>Responsive behavior:</strong> Consistent user experience across devices</li>
-                                <li><strong>Future scalability:</strong> System designed to accommodate new features</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <p>I developed a comprehensive design system in Figma with 15 reusable components to ensure consistency across the product. The system includes:</p>
+                    <ul>
+                        <li>Data visualization components optimized for trend analysis</li>
+                        <li>Consistent navigation patterns across all features</li>
+                        <li>WCAG 2.2 accessibility standards built into every component</li>
+                        <li>Responsive behaviors for seamless cross-device experience</li>
+                    </ul>
                     
                     <div class="img-container" style="margin: 20px 0; transform: rotate(0);">
-                        <img src="https://placehold.co/800x400/4A26A7/FFFFFF?text=TrendSpy+Design+System" alt="TrendSpy design system showing component library in Figma">
+                        <div class="image-placeholder dashboard-placeholder">
+                            Design System Components
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1810,22 +1720,21 @@ section.alt:last-of-type {
                     
                     <div class="image-gallery" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
                         <div class="gallery-item">
-                            <img src="https://placehold.co/400x300/6433E0/FFFFFF?text=User+Flow+Diagram" alt="TrendSpy user flow diagram showing the trend discovery journey">
+                            <div class="image-placeholder gallery-placeholder">
+                                User Flow Diagram
+                            </div>
                         </div>
                         <div class="gallery-item">
-                            <img src="https://placehold.co/400x300/8F69FF/FFFFFF?text=Dashboard+Wireframe" alt="TrendSpy dashboard wireframe showing customizable widgets">
+                            <div class="image-placeholder gallery-placeholder">
+                                Dashboard Wireframe
+                            </div>
                         </div>
                         <div class="gallery-item">
-                            <img src="https://placehold.co/400x300/4A26A7/FFFFFF?text=AI+Interface" alt="TrendSpy AI Magic Ball interface wireframe">
+                            <div class="image-placeholder gallery-placeholder">
+                                AI Interface Wireframe
+                            </div>
                         </div>
                     </div>
-                    
-                    <p style="margin-top: 20px;"><strong>User Flow Priorities:</strong> I focused on three critical user journeys based on our research:</p>
-                    <ol>
-                        <li>Discovering relevant new trends in user's industry</li>
-                        <li>Monitoring specific topics across multiple platforms</li>
-                        <li>Getting AI-powered insights for decision-making</li>
-                    </ol>
                 </div>
             </div>
             
@@ -1833,28 +1742,7 @@ section.alt:last-of-type {
                 <div class="step-number">4</div>
                 <div class="step-content">
                     <h3>Prototyping & Iteration</h3>
-                    <p>I created interactive prototypes in Figma and planned for iterative feedback sessions:</p>
-                    
-                    <p><strong>Key Design Challenges:</strong></p>
-                    <ul>
-                        <li>Finding the right balance between data density and readability</li>
-                        <li>Creating intuitive visualizations for complex trend relationships</li>
-                        <li>Designing a dashboard that accommodated diverse business needs</li>
-                        <li>Ensuring accessibility while maintaining visual sophistication</li>
-                    </ul>
-                    
-                    <p><strong>Planned Iterations:</strong></p>
-                    <ul>
-                        <li>Initial dashboard simplification to address potential information overload</li>
-                        <li>Redesign of trend cards to highlight actionable insights rather than raw data</li>
-                        <li>Progressive onboarding system to introduce features contextually</li>
-                        <li>Implementing contextual help systems for complex features</li>
-                    </ul>
-                    
-                    <div class="decision-card" style="margin-top: 20px;">
-                        <h3 class="decision-title">Note on Project Status</h3>
-                        <p>TrendSpy is currently in active development. Our design process is ongoing, with usability testing, iterations, and refinements planned for upcoming phases. This case study represents the work completed thus far and our planned approach for continued development.</p>
-                    </div>
+                    <p>I created interactive prototypes in Figma with planned iterations based on user feedback. Key design challenges included balancing data density with readability and creating intuitive visualizations for complex relationships.</p>
                 </div>
             </div>
         </div>
@@ -1868,20 +1756,20 @@ section.alt:last-of-type {
             <div class="content-grid">
                 <div class="text-content">
                     <h3 class="subheading">Final Design</h3>
-                    <p>My design solution unifies trend analysis from multiple sources into an intuitive platform optimized for small business users, with four key components:</p>
+                    <p>My design solution unifies analysis from multiple sources into an intuitive platform optimized for business users, with four key components:</p>
                     
                    <div style="margin: 20px 0; display: flex; flex-wrap: wrap; gap: 12px;">
                         <span class="skill-tag" style="background: var(--dashboard-purple); color: white; padding: 12px 20px; font-size: 1.1rem; font-weight: 600; box-shadow: 0 4px 12px rgba(174, 62, 201, 0.3);">Real-Time Monitoring</span>
                         <span class="skill-tag" style="background: var(--cyan); color: white; padding: 12px 20px; font-size: 1.1rem; font-weight: 600; box-shadow: 0 4px 12px rgba(76, 195, 207, 0.3);">Niche Discovery</span>
                         <span class="skill-tag" style="background: var(--light-dashboard-purple); color: white; padding: 12px 20px; font-size: 1.1rem; font-weight: 600; box-shadow: 0 4px 12px rgba(207, 94, 230, 0.3);">Historical Analysis</span>
-                        <span class="skill-tag" style="background: var(--navy); color: white; padding: 12px 20px; font-size: 1.1rem; font-weight: 600; box-shadow: 0 4px 12px rgba(13, 14, 43, 0.3);">AI Magic Ball</span>
+                        <span class="skill-tag" style="background: var(--navy); color: white; padding: 12px 20px; font-size: 1.1rem; font-weight: 600; box-shadow: 0 4px 12px rgba(13, 14, 43, 0.3);">AI Insights</span>
                     </div>
-                    
-                    <p>The interface balances data richness with simplicity, focusing on surfacing actionable insights rather than overwhelming users with raw data, while maintaining WCAG 2.2 accessibility standards.</p>
                 </div>
                 
                 <div class="img-container">
-                    <img src="https://placehold.co/600x400/0d0e2b/FFFFFF?text=TrendSpy+Dashboard" alt="TrendSpy dashboard final design showing unified trend analysis">
+                    <div class="image-placeholder dashboard-placeholder">
+                        TrendSpy Dashboard Interface
+                    </div>
                 </div>
             </div>
             
@@ -1890,23 +1778,21 @@ section.alt:last-of-type {
             <div class="feature-grid">
                 <div class="feature-card fade-in">
                     <div class="feature-icon">📊</div>
-                    <h3>Real-Time Trend Tracking</h3>
-                    <p>I designed a unified monitoring system that aggregates trends across social media, news outlets, and forums in real-time, translating complex data into actionable insights.</p>
+                    <h3>Real-Time Tracking</h3>
+                    <p>I designed a unified monitoring system that aggregates data across platforms in real-time, translating complex data into actionable insights.</p>
                     <ul>
                         <li>Cross-platform data aggregation</li>
                         <li>Visual trend indicators</li>
                         <li>Configurable alert thresholds</li>
-                        <li>Trend verification tools</li>
                     </ul>
                 </div>
                 
                 <div class="feature-card fade-in">
                     <div class="feature-icon">🔍</div>
-                    <h3>Niche Discovery Engine</h3>
-                    <p>I created an interface for the proprietary algorithm that identifies emerging trends specific to each user's industry, helping businesses discover opportunities early.</p>
+                    <h3>Discovery Engine</h3>
+                    <p>I created an interface for identifying emerging opportunities specific to each user's industry, helping businesses discover opportunities early.</p>
                     <ul>
                         <li>Industry-specific filtering</li>
-                        <li>Competitive trend comparison</li>
                         <li>Opportunity scoring system</li>
                         <li>Visual trend maps</li>
                     </ul>
@@ -1915,89 +1801,49 @@ section.alt:last-of-type {
                 <div class="feature-card fade-in">
                     <div class="feature-icon">📈</div>
                     <h3>Historical Analysis</h3>
-                    <p>I designed interactive visualizations allowing users to analyze trend evolution over time and identify patterns for predicting future movements.</p>
+                    <p>I designed interactive visualizations allowing users to analyze evolution over time and identify patterns for predicting future movements.</p>
                     <ul>
                         <li>Interactive time-series charts</li>
                         <li>Pattern highlighting</li>
-                        <li>Comparative analysis tools</li>
                         <li>Predictive indicators</li>
                     </ul>
                 </div>
                 
                 <div class="feature-card fade-in">
                     <div class="feature-icon">🔮</div>
-                    <h3>AI Magic Ball</h3>
-                    <p>I designed an AI-powered assistant that provides trend insights, predictions, and answers to business questions in natural language.</p>
+                    <h3>AI-Powered Insights</h3>
+                    <p>I designed an AI assistant that provides insights, predictions, and answers to business questions in natural language.</p>
                     <ul>
-                        <li>Trend-based Q&A system</li>
-                        <li>Predictive trend analysis</li>
-                        <li>Widget recommendations</li>
+                        <li>Natural language Q&A</li>
+                        <li>Predictive analysis</li>
                         <li>Conversation history</li>
                     </ul>
-                </div>
-            </div>
-            
-            <h3 class="subheading" style="margin-top: 60px; text-align: center;">Interface Design</h3>
-            
-            <div class="mobile-showcase">
-                <div>
-                    <div class="mobile-device">
-                        <div class="mobile-screen">
-                            <img src="https://placehold.co/280x560/0d0e2b/FFFFFF?text=Dashboard" alt="TrendSpy dashboard on mobile">
-                        </div>
-                    </div>
-                    <div class="screen-label">Main Dashboard</div>
-                </div>
-                
-                <div>
-                    <div class="mobile-device">
-                        <div class="mobile-screen">
-                            <img src="https://placehold.co/280x560/ae3ec9/FFFFFF?text=Widget+Library" alt="TrendSpy widget library screen showing categorized widgets">
-                        </div>
-                    </div>
-                    <div class="screen-label">Widget Library</div>
-                </div>
-                
-                <div>
-                    <div class="mobile-device">
-                        <div class="mobile-screen">
-                            <img src="https://placehold.co/280x560/4cc3cf/FFFFFF?text=AI+Magic+Ball" alt="TrendSpy AI chat interface with trend insights">
-                        </div>
-                    </div>
-                    <div class="screen-label">AI Magic Ball</div>
                 </div>
             </div>
             
             <div class="content-grid" style="margin-top: 50px;">
                 <div class="text-content">
                     <h3 class="subheading">Widget Library</h3>
-                    <p>The Widget Library provides users with customizable trend analysis components that can be combined to create personalized dashboards. Each widget offers specific insights into market trends, social media analysis, or industry-specific metrics.</p>
-                    <p>Users can filter widgets by category (World News, Business, Tech), customize data sources, and save preferred combinations. This modular approach allows for maximum flexibility while maintaining a consistent interface.</p>
+                    <p>The Widget Library provides customizable analysis components that can be combined to create personalized dashboards. Each widget offers specific insights into market data, social media analysis, or industry-specific metrics.</p>
+                    <p>This modular approach allows for maximum flexibility while maintaining a consistent interface.</p>
                 </div>
                 <div class="img-container">
-                    <img src="https://placehold.co/600x400/0d0e2b/FFFFFF?text=Widget+Library+Grid+View" alt="TrendSpy widget library showing categorized trend analysis tools">
+                    <div class="image-placeholder dashboard-placeholder">
+                        Widget Library Interface
+                    </div>
                 </div>
             </div>
             
             <div class="content-grid">
                 <div class="img-container">
-                    <img src="https://placehold.co/600x400/ae3ec9/FFFFFF?text=AI+Trend+Analysis" alt="TrendSpy AI assistant providing trend insights and predictions">
+                    <div class="image-placeholder dashboard-placeholder">
+                        AI Assistant Interface
+                    </div>
                 </div>
                 <div class="text-content">
-                    <h3 class="subheading">AI-Powered Trend Analysis</h3>
-                    <p>The AI Magic Ball feature helps users discover insights they might otherwise miss. Users can ask questions in natural language, and receive trend predictions based on comprehensive data analysis.</p>
-                    <p>The AI assistant considers the user's profile, business goals, and industry context to provide relevant recommendations. Conversation history is saved for future reference, creating a valuable knowledge repository.</p>
-                </div>
-            </div>
-            
-            <div class="content-grid">
-                <div class="text-content">
-                    <h3 class="subheading">Mobile-First Approach</h3>
-                    <p>A key aspect of TrendSpy's design is its mobile-responsive interface, allowing users to track trends on the go. The mobile experience preserves core functionality while adapting to smaller screens.</p>
-                    <p>Key mobile features include trend alerts, simplified data visualizations, and the ability to save trend reports for offline viewing. Gesture controls make navigating complex data intuitive on touch devices.</p>
-                </div>
-                <div class="img-container">
-                    <img src="https://placehold.co/600x400/4cc3cf/FFFFFF?text=Mobile+Experience" alt="TrendSpy mobile experience showing responsive design">
+                    <h3 class="subheading">AI-Powered Analysis</h3>
+                    <p>The AI feature helps users discover insights they might otherwise miss. Users can ask questions in natural language and receive predictions based on comprehensive data analysis.</p>
+                    <p>Conversation history is saved for future reference, creating a valuable knowledge repository.</p>
                 </div>
             </div>
         </div>
@@ -2011,53 +1857,37 @@ section.alt:last-of-type {
             <div class="content-grid">
                 <div class="text-content">
                     <h3 class="subheading">Front-End Development</h3>
-                    <p>As both designer and developer, I'm uniquely positioned to ensure the design vision is faithfully implemented. I'm leading front-end development using React.js, translating designs into functional components:</p>
+                    <p>As both designer and developer, I'm uniquely positioned to ensure the design vision is faithfully implemented. I'm leading front-end development using React.js:</p>
                     
                     <ul>
                         <li><strong>Component-based architecture:</strong> Creating reusable UI elements</li>
-                        <li><strong>Responsive design:</strong> Mobile-first approach ensuring cross-device compatibility</li>
-                        <li><strong>Performance optimization:</strong> Code splitting and lazy loading for fast loading</li>
-                        <li><strong>State management:</strong> Efficient data handling using React hooks and context</li>
+                        <li><strong>Responsive design:</strong> Mobile-first approach</li>
+                        <li><strong>Performance optimization:</strong> Code splitting and lazy loading</li>
+                        <li><strong>State management:</strong> Efficient data handling</li>
                     </ul>
                     
                     <div class="decision-card" style="margin-top: 20px;">
-                        <h3 class="decision-title">Collaboration with Backend Developer</h3>
-                        <p>I'm working closely with our backend developer to ensure seamless integration between the UI and data processing systems. This collaboration is essential to create an experience where complex trend data can be presented in an intuitive, actionable way for non-technical users.</p>
+                        <h3 class="decision-title">Technical Implementation</h3>
+                        <p>I'm working closely with our backend developer to ensure seamless integration. More technical details can be discussed during interviews under appropriate confidentiality agreements.</p>
                     </div>
                 </div>
                 
-                <div class="img-container">
-                    <img src="https://placehold.co/600x400/4A26A7/FFFFFF?text=React+Component+Development" alt="TrendSpy React component development">
-                </div>
-            </div>
-            
-            <div class="process-step fade-in">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3>Data Visualization Implementation</h3>
-                    <p>I'm implementing sophisticated data visualization components to present complex trend data in an accessible format:</p>
+                <div>
+                    <div class="process-step fade-in" style="margin: 0;">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Data Visualization</h3>
+                            <p>Implementing sophisticated visualization components to present complex data in an accessible format, with interactive elements and responsive designs.</p>
+                        </div>
+                    </div>
                     
-                    <ul>
-                        <li><strong>Custom chart components:</strong> Building specialized visualization tools using React.js and data visualization libraries</li>
-                        <li><strong>Interactive elements:</strong> Hover states, tooltips, and zooming capabilities for data exploration</li>
-                        <li><strong>Responsive visualizations:</strong> Charts and graphs that adapt to different screen sizes</li>
-                        <li><strong>Accessible data representation:</strong> Alternative text descriptions and keyboard interactions for charts</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="process-step fade-in">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3>AI Magic Ball Implementation</h3>
-                    <p>I've designed and am helping implement an AI-driven insights system that will translate complex trend data into actionable business recommendations:</p>
-                    
-                    <ul>
-                        <li><strong>Insight generation:</strong> UI for displaying AI-generated trend insights</li>
-                        <li><strong>Recommendation engine:</strong> Interface for business-specific action items</li>
-                        <li><strong>Explanation components:</strong> Visual elements explaining AI reasoning</li>
-                        <li><strong>Feedback mechanisms:</strong> User feedback loops to improve AI recommendations</li>
-                    </ul>
+                    <div class="process-step fade-in" style="margin: 30px 0 0 0;">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>AI Integration</h3>
+                            <p>Designing interfaces that translate complex AI capabilities into actionable business recommendations with clear visual explanations.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -2065,39 +1895,31 @@ section.alt:last-of-type {
                 <div class="step-number">3</div>
                 <div class="step-content">
                     <h3>Planned Usability Testing</h3>
-                    <p>I've designed a comprehensive usability testing plan to evaluate the effectiveness of our solution once implementation is complete:</p>
+                    <p>I've designed a comprehensive testing plan to evaluate our solution once implementation is complete:</p>
                     
                     <ul>
-                        <li><strong>Task-based testing:</strong> Evaluating how efficiently users can complete key tasks</li>
-                        <li><strong>Preference testing:</strong> Gathering feedback on visual design and information hierarchy</li>
-                        <li><strong>System Usability Scale (SUS):</strong> Measuring overall usability with industry-standard metrics</li>
-                        <li><strong>Accessibility evaluation:</strong> Testing with assistive technologies to ensure WCAG 2.2 compliance</li>
+                        <li><strong>Task-based testing:</strong> Evaluating efficiency of key user tasks</li>
+                        <li><strong>System Usability Scale:</strong> Measuring overall usability</li>
+                        <li><strong>Accessibility evaluation:</strong> WCAG 2.2 compliance testing</li>
                     </ul>
                     
                     <div class="decision-card" style="margin-top: 20px;">
                         <h3 class="decision-title">Target Metrics</h3>
-                        <p>We've established specific performance targets for our usability testing, including a 90%+ task completion rate, average time to first insight under 3 minutes, and an SUS score above 80. These metrics will guide our iterations and refinements after initial testing.</p>
+                        <p>90%+ task completion rate, average time to first insight under 3 minutes, and SUS score above 80.</p>
                     </div>
                 </div>
             </div>
             
-<div class="process-step fade-in">
+            <div class="process-step fade-in">
                 <div class="step-number">4</div>
                 <div class="step-content">
                     <h3>Landing Page Integration</h3>
-                    <p>I leveraged my previous experience designing and implementing the TrendSpy marketing landing page to ensure a cohesive user experience from acquisition to product use:</p>
-                    
-                    <ul>
-                        <li><strong>Conversion-focused design:</strong> Clear value proposition and strategic CTAs</li>
-                        <li><strong>Brand consistency:</strong> Maintained visual language across marketing and product</li>
-                        <li><strong>Performance optimization:</strong> Fast loading times and smooth animations</li>
-                        <li><strong>WCAG 2.2 compliance:</strong> Accessibility for all users</li>
-                    </ul>
+                    <p>I leveraged my previous experience designing the TrendSpy marketing landing page to ensure brand consistency from acquisition to product use.</p>
                     
                     <div class="decision-card" style="margin-top: 20px;">
                         <h3 class="decision-title">Landing Page Optimization</h3>
-                        <p>Through A/B testing of the landing page, I identified key optimizations that increased sign-up intent by 40% and improved comprehension scores. These insights are valuable for the application UI as well.</p>
- <p style="margin-top: 15px;"><strong>For a detailed breakdown of the landing page design process, including conversion optimization strategies and user testing insights, please see: <a href="/trendspy-landing-page-case-study" style="color: var(--dashboard-purple); text-decoration: underline; font-weight: 600;">TrendSpy Landing Page Case Study</a></strong></p>
+                        <p>Through A/B testing, I identified optimizations that increased sign-up intent by 40%.</p>
+                        <p style="margin-top: 15px;"><strong>For detailed insights into the landing page design process, please see: <a href="/trendspy-landing-page-case-study" style="color: var(--dashboard-purple); text-decoration: underline; font-weight: 600;">TrendSpy Landing Page Case Study</a></strong></p>
                     </div>
                 </div>
             </div>
@@ -2110,28 +1932,28 @@ section.alt:last-of-type {
             <h2 class="section-heading">Current Status & Impact</h2>
             
             <div class="text-content">
-                <p>TrendSpy is in active development with key features being implemented. Based on initial designs and stakeholder feedback, we're projecting significant improvements in efficiency and decision-making capabilities for our target users.</p>
+                <p>TrendSpy is in active development with key features being implemented. Based on initial designs and stakeholder feedback, we're projecting significant improvements in efficiency and decision-making capabilities.</p>
             </div>
             
             <div class="results-grid">
                 <div class="result-item fade-in">
                     <div class="result-number">40%</div>
-                    <p class="result-text">Projected reduction in time spent on trend analysis activities</p>
+                    <p class="result-text">Projected reduction in analysis time</p>
                 </div>
                 
                 <div class="result-item fade-in">
                     <div class="result-number">60%</div>
-                    <p class="result-text">Estimated cost savings compared to using multiple trend tools</p>
+                    <p class="result-text">Estimated cost savings vs. multiple tools</p>
                 </div>
                 
                 <div class="result-item fade-in">
                     <div class="result-number">85%</div>
-                    <p class="result-text">Initial stakeholder satisfaction with prototype designs</p>
+                    <p class="result-text">Stakeholder satisfaction with prototypes</p>
                 </div>
                 
                 <div class="result-item fade-in">
                     <div class="result-number">3x</div>
-                    <p class="result-text">Projected increase in trend discovery efficiency</p>
+                    <p class="result-text">Projected increase in discovery efficiency</p>
                 </div>
             </div>
             
@@ -2139,16 +1961,15 @@ section.alt:last-of-type {
                 <div>
                     <h3 class="subheading">Development Progress</h3>
                     <ul>
-                        <li><strong>Design system:</strong> Complete (15 components)</li>
+                        <li><strong>Design system:</strong> Complete</li>
                         <li><strong>Core wireframes:</strong> Complete</li>
                         <li><strong>Dashboard prototypes:</strong> 90% complete</li>
-                        <li><strong>AI Magic Ball design:</strong> 75% complete</li>
-                        <li><strong>Frontend implementation:</strong> 40% complete</li>
-                        <li><strong>Backend API integration:</strong> In planning phase</li>
+                        <li><strong>AI interface design:</strong> 75% complete</li>
+                        <li><strong>Frontend implementation:</strong> In progress</li>
                     </ul>
                     
                     <div class="quote-box">
-                        <p class="quote-text">The design approach you've taken with TrendSpy is exactly what our team needs. The focus on simplicity without sacrificing depth is going to be a game-changer for our trend analysis.</p>
+                        <p class="quote-text">The design approach is exactly what our team needs. The focus on simplicity without sacrificing depth is going to be a game-changer.</p>
                         <p class="quote-author">— Beta Program Participant</p>
                     </div>
                 </div>
@@ -2159,22 +1980,11 @@ section.alt:last-of-type {
                     <div class="reflection-box">
                         <h4 class="reflection-title">Accessibility Implementation</h4>
                         <ul style="margin-top: 15px; color: black;">
-                            <li>Implemented WCAG 2.2 AA standards in all design components</li>
-                            <li>Designed for complete keyboard navigability</li>
-                            <li>Ensured screen reader compatibility with proper ARIA attributes</li>
-                            <li>Maintained sufficient color contrast for all text and UI elements</li>
-                            <li>Created responsive designs that work across all device sizes</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="reflection-box">
-                        <h4 class="reflection-title">Widget System Architecture</h4>
-                        <ul style="margin-top: 15px; color: black;">
-                            <li>Designed reusable widget component framework</li>
-                            <li>Created consistent data visualization standards</li>
-                            <li>Implemented drag-and-drop widget customization</li>
-                            <li>Built category-based widget organization system</li>
-                            <li>Developed widget sharing and collaboration features</li>
+                            <li>WCAG 2.2 AA standards in all components</li>
+                            <li>Complete keyboard navigability</li>
+                            <li>Screen reader compatibility</li>
+                            <li>Sufficient color contrast throughout</li>
+                            <li>Responsive across all devices</li>
                         </ul>
                     </div>
                 </div>
@@ -2184,7 +1994,7 @@ section.alt:last-of-type {
 
             <div class="next-steps-container">
                 <div class="next-steps-intro">
-                    <p>As we continue implementation, I'm focused on the following priorities to bring TrendSpy to market:</p>
+                    <p>As we continue implementation, I'm focused on the following priorities:</p>
                 </div>
                 
                 <div class="next-steps-grid">
@@ -2193,12 +2003,12 @@ section.alt:last-of-type {
                             <h3>Usability Testing</h3>
                         </div>
                         <div class="next-step-content">
-                            <p>Conduct comprehensive tests with our target audience to validate our design decisions.</p>
+                            <p>Conduct comprehensive tests with target audience to validate design decisions.</p>
                             <ul>
-                                <li>Recruit diverse test participants</li>
-                                <li>Design task-based testing scenarios</li>
-                                <li>Collect qualitative and quantitative feedback</li>
-                                <li>Analyze results to identify improvement areas</li>
+                                <li>Recruit diverse participants</li>
+                                <li>Design task-based scenarios</li>
+                                <li>Collect feedback</li>
+                                <li>Analyze results</li>
                             </ul>
                         </div>
                     </div>
@@ -2208,12 +2018,12 @@ section.alt:last-of-type {
                             <h3>Design Iteration</h3>
                         </div>
                         <div class="next-step-content">
-                            <p>Refine the design based on testing feedback and stakeholder input.</p>
+                            <p>Refine based on testing feedback and stakeholder input.</p>
                             <ul>
-                                <li>Address usability pain points</li>
-                                <li>Optimize information hierarchy</li>
-                                <li>Enhance visual design elements</li>
-                                <li>Improve accessibility features</li>
+                                <li>Address pain points</li>
+                                <li>Optimize hierarchy</li>
+                                <li>Enhance visuals</li>
+                                <li>Improve accessibility</li>
                             </ul>
                         </div>
                     </div>
@@ -2223,12 +2033,12 @@ section.alt:last-of-type {
                             <h3>Feature Development</h3>
                         </div>
                         <div class="next-step-content">
-                            <p>Complete implementation of core features and prepare for beta launch.</p>
+                            <p>Complete implementation of core features for beta launch.</p>
                             <ul>
-                                <li>Finalize dashboard implementation</li>
-                                <li>Complete trend visualization components</li>
-                                <li>Integrate AI Magic Ball functionality</li>
-                                <li>Implement user authentication system</li>
+                                <li>Finalize dashboard</li>
+                                <li>Complete visualizations</li>
+                                <li>Integrate AI features</li>
+                                <li>Implement auth system</li>
                             </ul>
                         </div>
                     </div>
@@ -2238,12 +2048,12 @@ section.alt:last-of-type {
                             <h3>Beta Program</h3>
                         </div>
                         <div class="next-step-content">
-                            <p>Launch a controlled beta to gather real-world feedback before wider release.</p>
+                            <p>Launch controlled beta for real-world feedback.</p>
                             <ul>
-                                <li>Select diverse beta participants</li>
-                                <li>Implement feedback collection mechanisms</li>
-                                <li>Monitor usage patterns and engagement</li>
-                                <li>Establish rapid iteration cycles</li>
+                                <li>Select participants</li>
+                                <li>Implement feedback loops</li>
+                                <li>Monitor usage patterns</li>
+                                <li>Rapid iteration cycles</li>
                             </ul>
                         </div>
                     </div>
@@ -2252,15 +2062,15 @@ section.alt:last-of-type {
             
             <div class="reflection-box" style="margin-top: 80px;">
                 <h4 class="reflection-title">Skills Showcased</h4>
-                <p>This ongoing project has allowed me to demonstrate and develop several key skills:</p>
+                <p>This ongoing project demonstrates several key competencies:</p>
                 <ul>
-                    <li><strong>User-centered design:</strong> Transforming complex user needs into intuitive interfaces</li>
-                    <li><strong>Front-end development:</strong> Building sophisticated React components and data visualizations</li>
-                    <li><strong>Accessibility implementation:</strong> Making complex data accessible to all users</li>
-                    <li><strong>Research methodology:</strong> Gathering actionable insights through structured research</li>
-                    <li><strong>Cross-functional collaboration:</strong> Working effectively with stakeholders and developers</li>
-                    <li><strong>Design systems:</strong> Creating scalable, consistent component libraries</li>
-                    <li><strong>AI interface design:</strong> Making complex AI capabilities approachable and useful</li>
+                    <li><strong>User-centered design:</strong> Transforming complex needs into intuitive interfaces</li>
+                    <li><strong>Front-end development:</strong> Building sophisticated React components</li>
+                    <li><strong>Accessibility implementation:</strong> Making complex data accessible to all</li>
+                    <li><strong>Research methodology:</strong> Gathering actionable insights</li>
+                    <li><strong>Cross-functional collaboration:</strong> Working effectively with stakeholders</li>
+                    <li><strong>Design systems:</strong> Creating scalable component libraries</li>
+                    <li><strong>AI interface design:</strong> Making AI capabilities approachable</li>
                 </ul>
             </div>
             
