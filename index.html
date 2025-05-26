@@ -2314,10 +2314,7 @@ section.alt:last-of-type {
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
         <span class="lightbox-close">&times;</span>
-        <div class="lightbox-content">
-            <img class="lightbox-img" id="lightbox-img" src="" alt="">
-            <div class="lightbox-caption" id="lightbox-caption"></div>
-        </div>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="">
     </div>
 
     <script>
@@ -2414,7 +2411,6 @@ section.alt:last-of-type {
             // Lightbox functionality
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
-            const lightboxCaption = document.getElementById('lightbox-caption');
             const lightboxClose = document.querySelector('.lightbox-close');
             
             // Get all clickable images
@@ -2423,20 +2419,17 @@ section.alt:last-of-type {
             clickableImages.forEach(img => {
                 img.addEventListener('click', function() {
                     const imgSrc = this.getAttribute('src');
-                    const imgAlt = this.getAttribute('alt');
                     
                     lightboxImg.src = imgSrc;
-                    lightboxCaption.textContent = imgAlt;
-                    
                     lightbox.classList.add('active');
-                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                    document.body.style.overflow = 'hidden';
                 });
             });
             
             // Close lightbox
             function closeLightbox() {
                 lightbox.classList.remove('active');
-                document.body.style.overflow = 'auto'; // Re-enable scrolling
+                document.body.style.overflow = 'auto';
             }
             
             lightboxClose.addEventListener('click', closeLightbox);
