@@ -1526,10 +1526,11 @@ section.alt:last-of-type {
 
 .lightbox-content {
     position: relative;
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 95%;
+    max-height: 95%;
     margin: auto;
-    display: block;
+    display: flex;
+    flex-direction: column;
     background: white;
     border-radius: 15px;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
@@ -1547,7 +1548,8 @@ section.alt:last-of-type {
     height: auto;
     display: block;
     object-fit: contain;
-    max-height: 80vh;
+    max-height: 85vh;
+    min-height: 200px;
 }
 
 .lightbox-close {
@@ -1615,9 +1617,13 @@ section.alt:last-of-type {
 /* Mobile lightbox adjustments */
 @media (max-width: 768px) {
     .lightbox-content {
-        max-width: 95%;
-        max-height: 95%;
-        margin: 10px;
+        max-width: 98%;
+        max-height: 98%;
+        margin: 5px;
+    }
+    
+    .lightbox-img {
+        max-height: 90vh;
     }
     
     .lightbox-close {
