@@ -653,6 +653,7 @@ section.alt {
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     transform: rotate(-2deg);
     transition: all 0.4s ease;
+    min-height: 400px; /* Increased size */
 }
 
 .img-container:hover {
@@ -662,17 +663,26 @@ section.alt {
 
 .img-container img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     transition: transform 0.5s ease;
-    aspect-ratio: 16/9;
-    object-fit: cover;
+    object-fit: contain; /* Changed from cover to contain to show full image */
+    background: #f8f9fa; /* Light background for letterboxing */
 }
 
 .img-container:hover img {
     transform: scale(1.05);
 }
 
+/* Special styling for design system - keep smaller */
+.img-container.design-system {
+    min-height: 300px;
+}
+
+.img-container.design-system img {
+    object-fit: cover; /* Keep cover for design system */
+}
+        
 @media (max-width: 768px) {
     .img-container {
         transform: rotate(0);
