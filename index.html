@@ -1587,7 +1587,7 @@ section.alt:last-of-type {
 /* Click indicator */
 .img-container::after,
 .gallery-item::after {
-    content: '🔍';
+    content: '+';
     position: absolute;
     top: 15px;
     right: 15px;
@@ -1595,10 +1595,16 @@ section.alt:last-of-type {
     color: white;
     padding: 8px 12px;
     border-radius: 20px;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .img-container:hover::after,
@@ -2141,21 +2147,16 @@ section.alt:last-of-type {
             </div>
             
             <div class="two-columns" style="margin-top: 60px;">
-                <div>
-                    <h3 class="subheading">Development Progress</h3>
-                    <ul>
-                        <li><strong>Design system:</strong> Complete</li>
-                        <li><strong>Core wireframes:</strong> Complete</li>
-                        <li><strong>Dashboard prototypes:</strong> 90% complete</li>
-                        <li><strong>AI interface design:</strong> 75% complete</li>
-                        <li><strong>Frontend implementation:</strong> In progress</li>
-                    </ul>
-                    
-                    <div class="quote-box">
-                        <p class="quote-text">The design approach is exactly what our team needs. The focus on simplicity without sacrificing depth is going to be a game-changer.</p>
-                        <p class="quote-author">— Beta Program Participant</p>
+                    <div>
+                        <h3 class="subheading">Development Progress</h3>
+                        <ul>
+                            <li><strong>Design system:</strong> Complete</li>
+                            <li><strong>Core wireframes:</strong> Complete</li>
+                            <li><strong>Dashboard prototypes:</strong> 90% complete</li>
+                            <li><strong>AI interface design:</strong> 75% complete</li>
+                            <li><strong>Frontend implementation:</strong> In progress</li>
+                        </ul>
                     </div>
-                </div>
                 
                 <div>
                     <h3 class="subheading">Technical Implementation</h3>
