@@ -1526,8 +1526,8 @@ section.alt:last-of-type {
 
 .lightbox-content {
     position: relative;
-    max-width: 95%;
-    max-height: 95%;
+    max-width: 95vw;
+    max-height: 95vh;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -1544,12 +1544,12 @@ section.alt:last-of-type {
 }
 
 .lightbox-img {
-    width: 100%;
+    width: auto;
     height: auto;
+    max-width: 95vw;
+    max-height: 90vh;
     display: block;
     object-fit: contain;
-    max-height: 85vh;
-    min-height: 200px;
 }
 
 .lightbox-close {
@@ -1617,13 +1617,14 @@ section.alt:last-of-type {
 /* Mobile lightbox adjustments */
 @media (max-width: 768px) {
     .lightbox-content {
-        max-width: 98%;
-        max-height: 98%;
+        max-width: 98vw;
+        max-height: 98vh;
         margin: 5px;
     }
     
     .lightbox-img {
-        max-height: 90vh;
+        max-width: 98vw;
+        max-height: 92vh;
     }
     
     .lightbox-close {
