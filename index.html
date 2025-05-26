@@ -46,7 +46,7 @@ body {
     overflow-x: hidden;
     font-size: 16px;
     font-weight: 300;
-    padding-bottom: 65px; /* For bottom navigation */
+    padding-bottom: 0;
 }
 
 /* Improved spacing */
@@ -654,7 +654,7 @@ section.alt {
     transform: rotate(-2deg);
     transition: all 0.4s ease;
     min-height: 400px;
-    background: #f8f9fa; /* Background for letterboxing */
+    background: #f8f9fa;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -684,10 +684,19 @@ section.alt {
 .img-container.design-system {
     min-height: 300px;
 }
+
 @media (max-width: 768px) {
     .img-container {
         transform: rotate(0);
         margin-bottom: 30px;
+        min-height: 300px;
+    }
+    
+    .img-container img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto !important;
+        height: auto !important;
     }
 }
 
@@ -947,11 +956,11 @@ section.alt {
     }
 }
 
-/* Image Gallery */
+/* Image Gallery - Updated for bigger wireframes */
 .image-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
     margin: 40px 0;
 }
 
@@ -960,13 +969,21 @@ section.alt {
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     position: relative;
+    min-height: 450px;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .gallery-item img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
     display: block;
-    aspect-ratio: 16/10;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     transition: all 0.3s ease;
 }
 
@@ -977,6 +994,22 @@ section.alt {
 @media (max-width: 576px) {
     .image-gallery {
         grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .gallery-item {
+        min-height: 350px;
+    }
+    
+    .gallery-item img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto !important;
+        height: auto !important;
+    }
+    
+    .img-container {
+        min-height: 250px;
     }
 }
 
@@ -1412,24 +1445,16 @@ section.alt {
         color: var(--primary-light);
     }
 }
-/* Add this to your CSS */
-body {
-    /* Change this from padding-bottom: 65px; to: */
-    padding-bottom: 0;
-}
 
-/* Add this to style the section all the way to the bottom */
 #results {
-    padding-bottom: 65px; /* Move the padding from body to here */
+    padding-bottom: 65px;
     margin-bottom: 0;
 }
 
-/* Make sure the section extends fully */
 section.alt:last-of-type {
-    min-height: calc(100vh - 200px); /* This ensures it fills the remaining viewport */
+    min-height: calc(100vh - 200px);
 }
 
-/* Ensure the bottom nav sits exactly at the bottom of the viewport */
 .bottom-nav {
     bottom: 0;
     margin-bottom: 0;
@@ -1439,6 +1464,7 @@ section.alt:last-of-type {
 .image-placeholder {
     width: 100%;
     height: 100%;
+    min-height: 400px;
     background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
     display: flex;
     align-items: center;
@@ -1448,16 +1474,28 @@ section.alt:last-of-type {
     font-weight: 500;
     text-align: center;
     padding: 20px;
-    aspect-ratio: 16/9;
 }
 
 .gallery-placeholder {
-    aspect-ratio: 16/10;
+    min-height: 450px;
 }
 
 .dashboard-placeholder {
     background: linear-gradient(135deg, var(--navy) 0%, var(--dark-navy) 100%);
     color: rgba(255,255,255,0.6);
+    min-height: 400px;
+}
+
+/* Ensure all images in containers show fully */
+.img-container img,
+.gallery-item img,
+.feature-card img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
 }
 </style>
 </head>
@@ -1565,14 +1603,40 @@ section.alt:last-of-type {
                 </div>
             </div>
             
-            <div class="content-grid">
-                <div class="text-content">
-                    <h3 class="subheading">My Role & Responsibilities</h3>
-                    <p>As both the lead product designer and front-end developer, I work directly with the CEO and our backend developer to create TrendSpy from concept to implementation. This dual role allows me to maintain the design vision throughout the entire product development process.</p>
-                    <p>I'm responsible for translating business requirements into user-centered designs and functional front-end code, ensuring seamless integration between UI and data systems.</p>
+            <!-- My Role & Responsibilities - Full Width -->
+            <div class="text-content full-width">
+                <h3 class="subheading">My Role & Responsibilities</h3>
+                <div class="two-columns">
+                    <div>
+                        <p>As both the lead product designer and front-end developer, I work directly with the CEO and our backend developer to create TrendSpy from concept to implementation. This dual role allows me to maintain the design vision throughout the entire product development process.</p>
+                        <p>I'm responsible for translating business requirements into user-centered designs and functional front-end code, ensuring seamless integration between UI and data systems.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--dashboard-purple); margin-bottom: 15px; font-size: 1.3rem; font-weight: 600;">Key Responsibilities</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--dashboard-purple); font-weight: bold;">•</span>
+                                User research & stakeholder management
+                            </li>
+                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--dashboard-purple); font-weight: bold;">•</span>
+                                Design system creation & maintenance
+                            </li>
+                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--dashboard-purple); font-weight: bold;">•</span>
+                                Front-end development with React.js
+                            </li>
+                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--dashboard-purple); font-weight: bold;">•</span>
+                                WCAG 2.2 accessibility implementation
+                            </li>
+                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--dashboard-purple); font-weight: bold;">•</span>
+                                AI interface design & optimization
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                
-
             </div>
         </div>
     </section>
@@ -1657,12 +1721,12 @@ section.alt:last-of-type {
                 </div>
             </div>
             
-            <div class="content-grid" style="margin-top: 60px;">
-
-                <div class="text-content">
-                    <h3 class="subheading">User Quotes</h3>
-                    <p>Direct feedback from our target users provided powerful insights for our design strategy:</p>
-                    
+            <!-- User Quotes - Full Width -->
+            <div class="text-content full-width" style="margin-top: 60px;">
+                <h3 class="subheading">User Quotes</h3>
+                <p>Direct feedback from our target users provided powerful insights for our design strategy:</p>
+                
+                <div class="two-columns" style="margin-top: 30px;">
                     <div class="quote-box">
                         <p class="quote-text">I copy-paste between 5 different dashboards daily. It's killing my productivity.</p>
                         <p class="quote-author">— Marketing Lead at Tech Startup</p>
@@ -1711,7 +1775,7 @@ section.alt:last-of-type {
                         <li>Responsive behaviors for seamless cross-device experience</li>
                     </ul>
                     
-                    <div class="img-container" style="margin: 20px 0; transform: rotate(0);">
+                    <div class="img-container design-system" style="margin: 20px 0; transform: rotate(0);">
                         <img src="design-system.png" alt="Design System Components">
                     </div>
                 </div>
@@ -1723,15 +1787,15 @@ section.alt:last-of-type {
                     <h3>User Flows & Wireframing</h3>
                     <p>I mapped key user journeys and created wireframes for the core product functions:</p>
                     
-                    <div class="image-gallery" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin: 30px 0;">
-                        <div class="gallery-item" style="min-height: 300px;">
-                            <img src="userflow.png" alt="User Flow Diagram" style="height: 100%; object-fit: cover;">
+                    <div class="image-gallery">
+                        <div class="gallery-item">
+                            <img src="userflow.png" alt="User Flow Diagram">
                         </div>
-                        <div class="gallery-item" style="min-height: 300px;">
-                            <img src="trendspy_wireframe.svg" alt="Dashboard Wireframe" style="height: 100%; object-fit: cover;">
+                        <div class="gallery-item">
+                            <img src="trendspy_wireframe.svg" alt="Dashboard Wireframe">
                         </div>
-                        <div class="gallery-item" style="min-height: 300px;">
-                            <img src="trendy_wireframe.svg" alt="AI Interface Wireframe" style="height: 100%; object-fit: cover;">
+                        <div class="gallery-item">
+                            <img src="trendy_wireframe.svg" alt="AI Interface Wireframe">
                         </div>
                     </div>
                 </div>
