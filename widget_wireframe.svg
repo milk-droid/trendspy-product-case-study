@@ -1,0 +1,259 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#f8f9fa" stroke="none"/>
+  
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="240" height="800" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="20" y="30" font-family="Arial" font-size="16" font-weight="bold" fill="#333">TrendSpy</text>
+  
+  <!-- Navigation Items -->
+  <rect x="20" y="60" width="200" height="30" fill="none" stroke="#ccc" rx="4"/>
+  <text x="30" y="80" font-family="Arial" font-size="12" fill="#666">Dashboard</text>
+  
+  <rect x="20" y="100" width="200" height="30" fill="none" stroke="#ccc" rx="4"/>
+  <text x="30" y="120" font-family="Arial" font-size="12" fill="#666">Analytics</text>
+  
+  <rect x="20" y="140" width="200" height="30" fill="#e3f2fd" stroke="#1976d2" rx="4"/>
+  <text x="30" y="160" font-family="Arial" font-size="12" fill="#1976d2" font-weight="bold">Widget Library</text>
+  
+  <rect x="20" y="180" width="200" height="30" fill="none" stroke="#ccc" rx="4"/>
+  <text x="30" y="200" font-family="Arial" font-size="12" fill="#666">Trend Reports</text>
+  
+  <rect x="20" y="220" width="200" height="30" fill="none" stroke="#ccc" rx="4"/>
+  <text x="30" y="240" font-family="Arial" font-size="12" fill="#666">Alerts</text>
+  
+  <rect x="20" y="260" width="200" height="30" fill="none" stroke="#ccc" rx="4"/>
+  <text x="30" y="280" font-family="Arial" font-size="12" fill="#666">Settings</text>
+  
+  <!-- Main Content Area -->
+  <rect x="240" y="0" width="960" height="800" fill="none" stroke="#333" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="260" y="20" width="920" height="60" fill="none" stroke="#ddd"/>
+  
+  <!-- Search Bar -->
+  <rect x="280" y="35" width="400" height="30" fill="none" stroke="#ccc" rx="4"/>
+  <text x="290" y="53" font-family="Arial" font-size="12" fill="#999">Search for widgets...</text>
+  <circle cx="660" cy="50" r="8" fill="none" stroke="#ccc"/>
+  
+  <!-- Create Widget Button -->
+  <rect x="1020" y="35" width="140" height="30" fill="#6c5ce7" stroke="none" rx="4"/>
+  <text x="1030" y="53" font-family="Arial" font-size="11" fill="white">+ Create Widget</text>
+  
+  <!-- Page Title -->
+  <text x="280" y="120" font-family="Arial" font-size="24" font-weight="bold" fill="#333">Widget Library</text>
+  
+  <!-- Tabs -->
+  <rect x="260" y="140" width="920" height="40" fill="none" stroke="#ddd"/>
+  <line x1="260" y1="180" x2="1180" y2="180" stroke="#ddd"/>
+  
+  <text x="280" y="163" font-family="Arial" font-size="14" font-weight="bold" fill="#333">Explore</text>
+  <rect x="335" y="155" width="20" height="15" fill="#6c5ce7" rx="8"/>
+  <text x="340" y="164" font-family="Arial" font-size="10" fill="white">32</text>
+  
+  <text x="380" y="163" font-family="Arial" font-size="14" fill="#666">My Widgets</text>
+  <rect x="455" y="155" width="20" height="15" fill="#ddd" rx="8"/>
+  <text x="460" y="164" font-family="Arial" font-size="10" fill="#666">12</text>
+  
+  <text x="500" y="163" font-family="Arial" font-size="14" fill="#666">Favorites</text>
+  <rect x="560" y="155" width="15" height="15" fill="#ddd" rx="8"/>
+  <text x="565" y="164" font-family="Arial" font-size="10" fill="#666">5</text>
+  
+  <!-- Active tab indicator -->
+  <rect x="280" y="177" width="60" height="3" fill="#6c5ce7"/>
+  
+  <!-- Category Filters -->
+  <rect x="280" y="200" width="80" height="25" fill="#6c5ce7" stroke="none" rx="4"/>
+  <text x="290" y="215" font-family="Arial" font-size="11" fill="white">All Categories</text>
+  
+  <rect x="370" y="200" width="80" height="25" fill="none" stroke="#ccc" rx="4"/>
+  <text x="380" y="215" font-family="Arial" font-size="11" fill="#666">World News</text>
+  
+  <rect x="460" y="200" width="60" height="25" fill="none" stroke="#ccc" rx="4"/>
+  <text x="470" y="215" font-family="Arial" font-size="11" fill="#666">Business</text>
+  
+  <rect x="530" y="200" width="40" height="25" fill="none" stroke="#ccc" rx="4"/>
+  <text x="540" y="215" font-family="Arial" font-size="11" fill="#666">Tech</text>
+  
+  <rect x="580" y="200" width="40" height="25" fill="none" stroke="#ccc" rx="4"/>
+  <text x="590" y="215" font-family="Arial" font-size="11" fill="#666">News</text>
+  
+  <rect x="630" y="200" width="60" height="25" fill="none" stroke="#ccc" rx="4"/>
+  <text x="640" y="215" font-family="Arial" font-size="11" fill="#666">Analytics</text>
+  
+  <rect x="700" y="200" width="50" height="25" fill="none" stroke="#ccc" rx="4"/>
+  <text x="710" y="215" font-family="Arial" font-size="11" fill="#666">Finance</text>
+  
+  <!-- Widget Grid (3x2) -->
+  <!-- Row 1 -->
+  <!-- Widget 1 -->
+  <rect x="280" y="250" width="280" height="220" fill="none" stroke="#ddd" rx="8"/>
+  <rect x="280" y="250" width="280" height="140" fill="#f5f5f5" stroke="none" rx="8 8 0 0"/>
+  <rect x="520" y="260" width="40" height="15" fill="#6c5ce7" rx="3"/>
+  <text x="525" y="270" font-family="Arial" font-size="9" fill="white">Trending</text>
+  <rect x="520" y="370" width="40" height="15" fill="rgba(0,0,0,0.5)" rx="3"/>
+  <text x="525" y="380" font-family="Arial" font-size="9" fill="white">3.2k users</text>
+  
+  <!-- Mini chart -->
+  <polyline points="290,340 310,330 330,345 350,325 370,320 390,335 410,330 430,320 450,325 470,320 490,315 510,320 530,315 550,310" 
+            fill="none" stroke="#6c5ce7" stroke-width="2"/>
+  
+  <text x="290" y="410" font-family="Arial" font-size="14" font-weight="bold" fill="#333">Global News Trends</text>
+  <text x="290" y="425" font-family="Arial" font-size="11" fill="#666">Track trending topics in global news with</text>
+  <text x="290" y="438" font-family="Arial" font-size="11" fill="#666">real-time updates and sentiment analysis.</text>
+  
+  <rect x="290" y="450" width="70" height="15" fill="#f5f5f5" rx="3"/>
+  <text x="295" y="460" font-family="Arial" font-size="10" fill="#666">World News</text>
+  
+  <rect x="480" y="450" width="70" height="15" fill="#6c5ce7" rx="3"/>
+  <text x="490" y="460" font-family="Arial" font-size="10" fill="white">+ Add</text>
+  
+  <!-- Widget 2 -->
+  <rect x="580" y="250" width="280" height="220" fill="none" stroke="#ddd" rx="8"/>
+  <rect x="580" y="250" width="280" height="140" fill="#f5f5f5" stroke="none" rx="8 8 0 0"/>
+  <rect x="820" y="260" width="30" height="15" fill="#00bcd4" rx="3"/>
+  <text x="825" y="270" font-family="Arial" font-size="9" fill="white">New</text>
+  <rect x="820" y="370" width="30" height="15" fill="rgba(0,0,0,0.5)" rx="3"/>
+  <text x="825" y="380" font-family="Arial" font-size="9" fill="white">2.8k</text>
+  
+  <!-- Mini chart -->
+  <polyline points="590,340 610,345 630,335 650,340 670,330 690,325 710,335 730,340 750,330 770,325 790,330 810,325 830,320 850,325" 
+            fill="none" stroke="#00bcd4" stroke-width="2"/>
+  
+  <text x="590" y="410" font-family="Arial" font-size="14" font-weight="bold" fill="#333">Business Insights</text>
+  <text x="590" y="425" font-family="Arial" font-size="11" fill="#666">Monitor key business trends and market</text>
+  <text x="590" y="438" font-family="Arial" font-size="11" fill="#666">sentiment with advanced AI analytics.</text>
+  
+  <rect x="590" y="450" width="50" height="15" fill="#f5f5f5" rx="3"/>
+  <text x="595" y="460" font-family="Arial" font-size="10" fill="#666">Business</text>
+  
+  <rect x="780" y="450" width="70" height="15" fill="#6c5ce7" rx="3"/>
+  <text x="790" y="460" font-family="Arial" font-size="10" fill="white">+ Add</text>
+  
+  <!-- Widget 3 -->
+  <rect x="880" y="250" width="280" height="220" fill="none" stroke="#ddd" rx="8"/>
+  <rect x="880" y="250" width="280" height="140" fill="#f5f5f5" stroke="none" rx="8 8 0 0"/>
+  <rect x="1120" y="260" width="30" height="15" fill="#6c5ce7" rx="3"/>
+  <text x="1125" y="270" font-family="Arial" font-size="9" fill="white">Hot</text>
+  <rect x="1120" y="370" width="30" height="15" fill="rgba(0,0,0,0.5)" rx="3"/>
+  <text x="1125" y="380" font-family="Arial" font-size="9" fill="white">3.5k</text>
+  
+  <!-- Mini dots for map -->
+  <circle cx="920" cy="320" r="4" fill="#6c5ce7" opacity="0.7"/>
+  <circle cx="950" cy="310" r="3" fill="#6c5ce7" opacity="0.7"/>
+  <circle cx="980" cy="330" r="5" fill="#6c5ce7" opacity="0.7"/>
+  <circle cx="1010" cy="315" r="3" fill="#6c5ce7" opacity="0.7"/>
+  <circle cx="1040" cy="340" r="4" fill="#6c5ce7" opacity="0.7"/>
+  
+  <text x="890" y="410" font-family="Arial" font-size="14" font-weight="bold" fill="#333">Tech Innovations</text>
+  <text x="890" y="425" font-family="Arial" font-size="11" fill="#666">Discover emerging technologies and</text>
+  <text x="890" y="438" font-family="Arial" font-size="11" fill="#666">innovation trends across tech industries.</text>
+  
+  <rect x="890" y="450" width="30" height="15" fill="#f5f5f5" rx="3"/>
+  <text x="895" y="460" font-family="Arial" font-size="10" fill="#666">Tech</text>
+  
+  <rect x="1080" y="450" width="70" height="15" fill="#6c5ce7" rx="3"/>
+  <text x="1090" y="460" font-family="Arial" font-size="10" fill="white">+ Add</text>
+  
+  <!-- Row 2 -->
+  <!-- Widget 4 -->
+  <rect x="280" y="490" width="280" height="220" fill="none" stroke="#ddd" rx="8"/>
+  <rect x="280" y="490" width="280" height="140" fill="#f5f5f5" stroke="none" rx="8 8 0 0"/>
+  <rect x="520" y="500" width="30" height="15" fill="#ff9800" rx="3"/>
+  <text x="525" y="510" font-family="Arial" font-size="9" fill="white">New</text>
+  <rect x="520" y="610" width="30" height="15" fill="rgba(0,0,0,0.5)" rx="3"/>
+  <text x="525" y="620" font-family="Arial" font-size="9" fill="white">1.9k</text>
+  
+  <!-- News items -->
+  <rect x="290" y="510" width="240" height="12" fill="white" rx="2"/>
+  <text x="295" y="520" font-family="Arial" font-size="9" fill="#333">Global Climate Summit Produces...</text>
+  <rect x="290" y="530" width="240" height="12" fill="white" rx="2"/>
+  <text x="295" y="540" font-family="Arial" font-size="9" fill="#333">Tech Giants Face New Regulatory...</text>
+  <rect x="290" y="550" width="240" height="12" fill="white" rx="2"/>
+  <text x="295" y="560" font-family="Arial" font-size="9" fill="#333">Investment Flows Show Strong...</text>
+  
+  <text x="290" y="650" font-family="Arial" font-size="14" font-weight="bold" fill="#333">Trending News</text>
+  <text x="290" y="665" font-family="Arial" font-size="11" fill="#666">Stay updated with the latest trending</text>
+  <text x="290" y="678" font-family="Arial" font-size="11" fill="#666">news stories from around the world.</text>
+  
+  <rect x="290" y="690" width="30" height="15" fill="#f5f5f5" rx="3"/>
+  <text x="295" y="700" font-family="Arial" font-size="10" fill="#666">News</text>
+  
+  <rect x="480" y="690" width="70" height="15" fill="#6c5ce7" rx="3"/>
+  <text x="490" y="700" font-family="Arial" font-size="10" fill="white">+ Add</text>
+  
+  <!-- Widget 5 -->
+  <rect x="580" y="490" width="280" height="220" fill="none" stroke="#ddd" rx="8"/>
+  <rect x="580" y="490" width="280" height="140" fill="#f5f5f5" stroke="none" rx="8 8 0 0"/>
+  <rect x="820" y="610" width="30" height="15" fill="rgba(0,0,0,0.5)" rx="3"/>
+  <text x="825" y="620" font-family="Arial" font-size="9" fill="white">2.3k</text>
+  
+  <!-- Flow diagram -->
+  <circle cx="620" cy="540" r="20" fill="none" stroke="#6c5ce7" stroke-width="2"/>
+  <text x="615" y="545" font-family="Arial" font-size="10" fill="#6c5ce7">VC</text>
+  <circle cx="720" cy="520" r="15" fill="none" stroke="#6c5ce7" stroke-width="2"/>
+  <text x="715" y="525" font-family="Arial" font-size="10" fill="#6c5ce7">AI</text>
+  <circle cx="750" cy="570" r="18" fill="none" stroke="#6c5ce7" stroke-width="2"/>
+  <text x="742" y="575" font-family="Arial" font-size="10" fill="#6c5ce7">Green</text>
+  
+  <line x1="640" y1="535" x2="705" y2="525" stroke="#6c5ce7" stroke-width="2"/>
+  <line x1="640" y1="550" x2="732" y2="565" stroke="#6c5ce7" stroke-width="2"/>
+  
+  <text x="590" y="650" font-family="Arial" font-size="14" font-weight="bold" fill="#333">Investment Flow</text>
+  <text x="590" y="665" font-family="Arial" font-size="11" fill="#666">Monitor investment flows between</text>
+  <text x="590" y="678" font-family="Arial" font-size="11" fill="#666">sectors and track funding trends.</text>
+  
+  <rect x="590" y="690" width="40" height="15" fill="#f5f5f5" rx="3"/>
+  <text x="595" y="700" font-family="Arial" font-size="10" fill="#666">Finance</text>
+  
+  <rect x="780" y="690" width="70" height="15" fill="#6c5ce7" rx="3"/>
+  <text x="790" y="700" font-family="Arial" font-size="10" fill="white">+ Add</text>
+  
+  <!-- Widget 6 -->
+  <rect x="880" y="490" width="280" height="220" fill="none" stroke="#ddd" rx="8"/>
+  <rect x="880" y="490" width="280" height="140" fill="#f5f5f5" stroke="none" rx="8 8 0 0"/>
+  <rect x="1120" y="610" width="30" height="15" fill="rgba(0,0,0,0.5)" rx="3"/>
+  <text x="1125" y="620" font-family="Arial" font-size="9" fill="white">2.1k</text>
+  
+  <!-- Industry tags -->
+  <rect x="890" y="510" width="50" height="12" fill="#6c5ce7" rx="2"/>
+  <text x="895" y="520" font-family="Arial" font-size="9" fill="white">Technology</text>
+  <rect x="950" y="510" width="45" height="12" fill="#6c5ce7" rx="2"/>
+  <text x="955" y="520" font-family="Arial" font-size="9" fill="white">Healthcare</text>
+  <rect x="1005" y="510" width="35" height="12" fill="#ddd" rx="2"/>
+  <text x="1010" y="520" font-family="Arial" font-size="9" fill="#666">Energy</text>
+  
+  <!-- Chart lines -->
+  <polyline points="890,540 920,535 950,530 980,525 1010,520 1040,515 1070,510 1100,505 1130,500 1150,495" 
+            fill="none" stroke="#6c5ce7" stroke-width="2"/>
+  <polyline points="890,550 920,545 950,540 980,540 1010,535 1040,530 1070,525 1100,520 1130,515 1150,510" 
+            fill="none" stroke="#00bcd4" stroke-width="2"/>
+  
+  <text x="890" y="650" font-family="Arial" font-size="14" font-weight="bold" fill="#333">Industry Growth</text>
+  <text x="890" y="665" font-family="Arial" font-size="11" fill="#666">Compare growth rates across multiple</text>
+  <text x="890" y="678" font-family="Arial" font-size="11" fill="#666">industries with interactive chart.</text>
+  
+  <rect x="890" y="690" width="50" height="15" fill="#f5f5f5" rx="3"/>
+  <text x="895" y="700" font-family="Arial" font-size="10" fill="#666">Business</text>
+  
+  <rect x="1080" y="690" width="70" height="15" fill="#6c5ce7" rx="3"/>
+  <text x="1090" y="700" font-family="Arial" font-size="10" fill="white">+ Add</text>
+  
+  <!-- Pagination -->
+  <rect x="280" y="740" width="880" height="40" fill="none" stroke="none"/>
+  
+  <rect x="580" y="750" width="30" height="30" fill="none" stroke="#ccc" rx="4"/>
+  <text x="590" y="768" font-family="Arial" font-size="12" fill="#666">←</text>
+  
+  <rect x="620" y="750" width="30" height="30" fill="#6c5ce7" stroke="none" rx="4"/>
+  <text x="632" y="768" font-family="Arial" font-size="12" fill="white">1</text>
+  
+  <rect x="660" y="750" width="30" height="30" fill="none" stroke="#ccc" rx="4"/>
+  <text x="672" y="768" font-family="Arial" font-size="12" fill="#666">2</text>
+  
+  <rect x="700" y="750" width="30" height="30" fill="none" stroke="#ccc" rx="4"/>
+  <text x="712" y="768" font-family="Arial" font-size="12" fill="#666">3</text>
+  
+  <rect x="740" y="750" width="30" height="30" fill="none" stroke="#ccc" rx="4"/>
+  <text x="750" y="768" font-family="Arial" font-size="12" fill="#666">→</text>
+</svg>

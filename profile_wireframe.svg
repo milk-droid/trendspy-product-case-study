@@ -1,0 +1,195 @@
+<svg viewBox="0 0 1200 1000" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="1000" fill="#f8f9fa" stroke="none"/>
+  
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="200" height="1000" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="100" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold">TrendSpy</text>
+  
+  <!-- Navigation items -->
+  <rect x="20" y="60" width="160" height="30" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="30" y="80" font-family="Arial, sans-serif" font-size="12">Dashboard</text>
+  
+  <rect x="20" y="100" width="160" height="30" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="30" y="120" font-family="Arial, sans-serif" font-size="12">Analytics</text>
+  
+  <rect x="20" y="140" width="160" height="30" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="30" y="160" font-family="Arial, sans-serif" font-size="12">Reports</text>
+  
+  <rect x="20" y="180" width="160" height="30" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="30" y="200" font-family="Arial, sans-serif" font-size="12">Alerts</text>
+  
+  <!-- Active Profile item -->
+  <rect x="20" y="220" width="160" height="30" fill="#e6f3ff" stroke="#333" stroke-width="2"/>
+  <text x="30" y="240" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Profile</text>
+  
+  <rect x="20" y="260" width="160" height="30" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="30" y="280" font-family="Arial, sans-serif" font-size="12">Settings</text>
+  
+  <!-- Main Content Area -->
+  <rect x="200" y="0" width="1000" height="1000" fill="none" stroke="#333" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="220" y="20" width="960" height="60" fill="none" stroke="#666" stroke-width="1"/>
+  
+  <!-- Search bar -->
+  <rect x="240" y="35" width="600" height="30" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="250" y="55" font-family="Arial, sans-serif" font-size="12" fill="#888">Search for trends, topics, or industries...</text>
+  
+  <!-- User actions -->
+  <rect x="860" y="35" width="100" height="30" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="910" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="11">New Alert</text>
+  
+  <!-- Profile avatar -->
+  <circle cx="1000" cy="50" r="15" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="1000" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">JS</text>
+  
+  <!-- Page Title -->
+  <text x="240" y="120" font-family="Arial, sans-serif" font-size="20" font-weight="bold">User Profile</text>
+  
+  <!-- Profile Header Section -->
+  <rect x="240" y="140" width="720" height="80" fill="none" stroke="#666" stroke-width="1"/>
+  
+  <!-- Profile avatar large -->
+  <circle cx="290" cy="180" r="25" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="290" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">JS</text>
+  
+  <!-- Profile info -->
+  <text x="330" y="175" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Jamie Smith</text>
+  <text x="330" y="195" font-family="Arial, sans-serif" font-size="12" fill="#666">Director of Product Strategy</text>
+  
+  <!-- Tabs -->
+  <rect x="240" y="240" width="720" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <rect x="240" y="240" width="80" height="40" fill="#e6f3ff" stroke="#333" stroke-width="1"/>
+  <text x="280" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Company</text>
+  
+  <rect x="320" y="240" width="80" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="360" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">Goals</text>
+  
+  <rect x="400" y="240" width="80" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="440" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">Trends</text>
+  
+  <rect x="480" y="240" width="80" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="520" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">Settings</text>
+  
+  <!-- Main Content Grid -->
+  <!-- Left Column -->
+  <rect x="240" y="300" width="480" height="660" fill="none" stroke="#666" stroke-width="1"/>
+  
+  <!-- Company Profile Section -->
+  <text x="260" y="325" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Company Profile</text>
+  
+  <!-- Form fields -->
+  <rect x="260" y="355" width="440" height="25" fill="none" stroke="#ccc" stroke-width="1"/>
+  <text x="265" y="350" font-family="Arial, sans-serif" font-size="10" fill="#666">Company Name</text>
+  <text x="265" y="370" font-family="Arial, sans-serif" font-size="11">TechVision Inc.</text>
+  
+  <rect x="260" y="395" width="440" height="25" fill="none" stroke="#ccc" stroke-width="1"/>
+  <text x="265" y="390" font-family="Arial, sans-serif" font-size="10" fill="#666">Industry</text>
+  <text x="265" y="410" font-family="Arial, sans-serif" font-size="11">Technology - Enterprise Software</text>
+  
+  <rect x="260" y="435" width="440" height="60" fill="none" stroke="#ccc" stroke-width="1"/>
+  <text x="265" y="430" font-family="Arial, sans-serif" font-size="10" fill="#666">Company Description</text>
+  <text x="265" y="450" font-family="Arial, sans-serif" font-size="9">TechVision Inc. is an AI-powered analytics platform...</text>
+  
+  <!-- Business Goals Section -->
+  <text x="260" y="535" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Business Goals</text>
+  
+  <!-- Goal cards -->
+  <rect x="260" y="555" width="130" height="90" fill="none" stroke="#ccc" stroke-width="1"/>
+  <text x="265" y="570" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Increase Market Share</text>
+  <text x="265" y="585" font-family="Arial, sans-serif" font-size="9">Target: 25% by Q4 2025</text>
+  <text x="265" y="600" font-family="Arial, sans-serif" font-size="9">Currently at 18%</text>
+  <rect x="265" y="620" width="90" height="5" fill="#e0e0e0"/>
+  <rect x="265" y="620" width="65" height="5" fill="#333"/>
+  
+  <rect x="410" y="555" width="130" height="90" fill="none" stroke="#ccc" stroke-width="1"/>
+  <text x="415" y="570" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Expand to New Markets</text>
+  <text x="415" y="585" font-family="Arial, sans-serif" font-size="9">Target: Launch in 3 countries</text>
+  <text x="415" y="600" font-family="Arial, sans-serif" font-size="9">In planning phase</text>
+  <rect x="415" y="620" width="90" height="5" fill="#e0e0e0"/>
+  <rect x="415" y="620" width="22" height="5" fill="#333"/>
+  
+  <rect x="560" y="555" width="130" height="90" fill="none" stroke="#ccc" stroke-width="1" stroke-dasharray="5,5"/>
+  <text x="625" y="605" text-anchor="middle" font-family="Arial, sans-serif" font-size="11">+ Add New Goal</text>
+  
+  <!-- Suggested Trends Section -->
+  <text x="260" y="685" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Suggested Trends</text>
+  
+  <!-- Trend cards -->
+  <rect x="260" y="705" width="130" height="100" fill="none" stroke="#ccc" stroke-width="1"/>
+  <text x="265" y="720" font-family="Arial, sans-serif" font-size="11" font-weight="bold">AI Governance</text>
+  <text x="265" y="735" font-family="Arial, sans-serif" font-size="9">+54%</text>
+  <text x="265" y="750" font-family="Arial, sans-serif" font-size="8">Regulatory frameworks evolving</text>
+  <text x="265" y="765" font-family="Arial, sans-serif" font-size="8">Relevance: 85%</text>
+  <rect x="265" y="780" width="90" height="15" fill="none" stroke="#ccc" stroke-width="1"/>
+  <text x="310" y="790" text-anchor="middle" font-family="Arial, sans-serif" font-size="8">+ Add to Dashboard</text>
+  
+  <rect x="410" y="705" width="130" height="100" fill="none" stroke="#ccc" stroke-width="1"/>
+  <text x="415" y="720" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Predictive Analytics</text>
+  <text x="415" y="735" font-family="Arial, sans-serif" font-size="9">+68%</text>
+  <text x="415" y="750" font-family="Arial, sans-serif" font-size="8">Investment in capabilities</text>
+  <text x="415" y="765" font-family="Arial, sans-serif" font-size="8">Relevance: 95%</text>
+  <rect x="415" y="780" width="90" height="15" fill="none" stroke="#ccc" stroke-width="1"/>
+  <text x="460" y="790" text-anchor="middle" font-family="Arial, sans-serif" font-size="8">+ Add to Dashboard</text>
+  
+  <rect x="560" y="705" width="130" height="100" fill="none" stroke="#ccc" stroke-width="1"/>
+  <text x="565" y="720" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Data Privacy</text>
+  <text x="565" y="735" font-family="Arial, sans-serif" font-size="9">+42%</text>
+  <text x="565" y="750" font-family="Arial, sans-serif" font-size="8">Consumer protection focus</text>
+  <text x="565" y="765" font-family="Arial, sans-serif" font-size="8">Relevance: 78%</text>
+  <rect x="565" y="780" width="90" height="15" fill="none" stroke="#ccc" stroke-width="1"/>
+  <text x="610" y="790" text-anchor="middle" font-family="Arial, sans-serif" font-size="8">+ Add to Dashboard</text>
+  
+  <!-- Action Buttons -->
+  <rect x="540" y="880" width="60" height="30" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="570" y="900" text-anchor="middle" font-family="Arial, sans-serif" font-size="11">Cancel</text>
+  
+  <rect x="610" y="880" width="90" height="30" fill="#333" stroke="#333" stroke-width="1"/>
+  <text x="655" y="900" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white">Save Changes</text>
+  
+  <!-- Right Sidebar -->
+  <rect x="740" y="300" width="220" height="660" fill="none" stroke="#666" stroke-width="1"/>
+  
+  <!-- Recent Activity -->
+  <text x="760" y="325" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Recent Activity</text>
+  
+  <!-- Activity items -->
+  <rect x="760" y="340" width="180" height="50" fill="none" stroke="#ccc" stroke-width="1"/>
+  <circle cx="775" cy="365" r="8" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="790" y="355" font-family="Arial, sans-serif" font-size="9">Added "Predictive Analytics"</text>
+  <text x="790" y="368" font-family="Arial, sans-serif" font-size="9">trend to dashboard</text>
+  <text x="790" y="380" font-family="Arial, sans-serif" font-size="8" fill="#666">Today at 11:32 AM</text>
+  
+  <rect x="760" y="400" width="180" height="50" fill="none" stroke="#ccc" stroke-width="1"/>
+  <circle cx="775" cy="425" r="8" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="790" y="415" font-family="Arial, sans-serif" font-size="9">Created new goal</text>
+  <text x="790" y="428" font-family="Arial, sans-serif" font-size="9">"Expand to New Markets"</text>
+  <text x="790" y="440" font-family="Arial, sans-serif" font-size="8" fill="#666">Yesterday at 3:15 PM</text>
+  
+  <rect x="760" y="460" width="180" height="50" fill="none" stroke="#ccc" stroke-width="1"/>
+  <circle cx="775" cy="485" r="8" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="790" y="475" font-family="Arial, sans-serif" font-size="9">New alert created for</text>
+  <text x="790" y="488" font-family="Arial, sans-serif" font-size="9">"AI Governance" trend</text>
+  <text x="790" y="500" font-family="Arial, sans-serif" font-size="8" fill="#666">May 17, 2025</text>
+  
+  <!-- Trend Performance -->
+  <text x="760" y="540" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Trend Performance</text>
+  
+  <rect x="760" y="560" width="180" height="100" fill="none" stroke="#ccc" stroke-width="1"/>
+  <text x="765" y="575" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Your Top Performer</text>
+  <text x="765" y="590" font-family="Arial, sans-serif" font-size="9">+68%</text>
+  <text x="765" y="605" font-family="Arial, sans-serif" font-size="10" font-weight="bold">Predictive Analytics</text>
+  <text x="765" y="620" font-family="Arial, sans-serif" font-size="8">Consistent growth over</text>
+  <text x="765" y="635" font-family="Arial, sans-serif" font-size="8">the past quarter and</text>
+  <text x="765" y="650" font-family="Arial, sans-serif" font-size="8">aligns with company goals</text>
+  
+  <!-- Usage Statistics -->
+  <text x="760" y="690" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Usage Statistics</text>
+  
+  <rect x="760" y="710" width="180" height="80" fill="none" stroke="#ccc" stroke-width="1"/>
+  <text x="765" y="725" font-family="Arial, sans-serif" font-size="10">Active Trends: 12</text>
+  <text x="765" y="740" font-family="Arial, sans-serif" font-size="10">Alerts Set: 8</text>
+  <text x="765" y="755" font-family="Arial, sans-serif" font-size="10">Goals Tracked: 2</text>
+  <text x="765" y="770" font-family="Arial, sans-serif" font-size="10">Last Login: Today 9:15 AM</text>
+</svg>
